@@ -47,11 +47,13 @@ let mapleader = " " " remapping <leader> key from '\' to ' '
 " emmet
 let g:user_emmet_leader_key='<C-Q>' " trigger key redifened to crtl-Q instead of ctrl-Y
 
+" git
+nmap <leader>gd :Gdiffsplit <CR>
 
 " JavaAutocomplete
-nmap <leader>i <Plug>(JavaComplete-Imports-AddMissing)
-nmap <leader>r <Plug>(JavaComplete-Imports-RemoveUnused)
-nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-ClassInFile)
+" nmap <leader>i <Plug>(JavaComplete-Imports-AddMissing)
+" nmap <leader>r <Plug>(JavaComplete-Imports-RemoveUnused)
+" nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-ClassInFile)
 
 
 " YouCompleteMe
@@ -62,6 +64,8 @@ nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-ClassInFile)
 "     nnoremap <buffer> <silent> <leader>r :YcmCompleter GoToReferences<CR> 
 "     " YCM Rename
 "     nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
+"     " let g:UltiSnipsExpandTrigger="<c-j>"
+"     let g:ycm_use_ultisnips_completer = 0
 " endfun
 
 
@@ -71,7 +75,7 @@ nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-ClassInFile)
 " ConquerOfCompletion
 " fun! GoCoc()
 
-" using <down> instead of <C-n> that is mapped to <TAB> to make it work with snippets
+    " using <down> instead of <C-n> that is mapped to <TAB> to make it work with snippets
 inoremap <buffer> <silent><expr> <TAB>
             \ pumvisible() ? "\<down>" :
             \ <SID>check_back_space() ? "\<TAB>" :
@@ -82,7 +86,8 @@ inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <buffer> <silent><expr> <C-space> coc#refresh()
 
 nmap <buffer> <leader>d <Plug>(coc-definition)
-nmap <buffer> <leader>r <Plug>(coc-references)
+nmap <buffer> <leader>gr <Plug>(coc-references)
+nmap <buffer> <leader>rr <Plug>(coc-rename)
 nmap <buffer> <leader>i <Plug>(coc-implementation)
 " endfun
 
@@ -189,6 +194,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " YouCompleteMe for autocompletion
 " Plug 'ycm-core/YouCompleteMe'
 
+" Vimspector debugger
+Plug 'puremourning/vimspector'
+
 " vim-ariline status bar
 Plug 'vim-airline/vim-airline'
 
@@ -287,8 +295,15 @@ map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
 
 " Python run and debugging F10 for debugging F9 to run
-autocmd Filetype python noremap <buffer> <F10> :exec '!python3 -m pdb' shellescape(@%, 1)<cr>
+" autocmd Filetype python noremap <buffer> <F10> :exec '!python3 -m pdb' shellescape(@%, 1)<cr>
 autocmd Filetype python nnoremap <buffer> <F9> :exec '!python3' shellescape(@%, 1)<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vimspector
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimspector_enable_mappings = 'HUMAN'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RipGrep
@@ -324,11 +339,11 @@ set updatetime=100
 " autocmd vimenter * NERDTree
 
 " Use JavaAutocoplete for Java
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 
 " Use YCM for these languages
-" autocmd FileType typescript,js :call GoYCM()
+" autocmd FileType typescript,js,java :call GoYCM()
 
 " Use CoC for these languages
 " autocmd FileType cpp,cxx,h,hpp,c,python,plaintex :call GoCoc()

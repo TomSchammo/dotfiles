@@ -158,6 +158,9 @@ Plug 'morhetz/gruvbox'
 " NERDTree
 Plug 'preservim/nerdtree'
 
+" NERDCommenter
+Plug 'preservim/nerdcommenter'
+
 " Vim Man Page
 Plug 'vim-utils/vim-man'
 
@@ -273,6 +276,29 @@ noremap <silent> <C-Down> :resize -3<CR>
 map <Leader>h <C-w>t<C-w>H
 map <Leader>v <C-w>t<C-w>K
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDCommenter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+
+" TODO maybe customize keybinds as well
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

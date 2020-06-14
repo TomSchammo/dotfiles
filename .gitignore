@@ -4,5 +4,6 @@
 # Except
 !.vimrc
 !.bashrc
+!.vimspector.json
 !.gitignore
 !README.md

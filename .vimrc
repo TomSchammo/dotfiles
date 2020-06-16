@@ -71,11 +71,10 @@ nmap <leader>gd :Gdiffsplit <CR>
 
 
 
-
 " ConquerOfCompletion
 " fun! GoCoc()
 
-    " using <down> instead of <C-n> that is mapped to <TAB> to make it work with snippets
+" using <down> instead of <C-n> that is mapped to <TAB> to make it work with snippets
 inoremap <buffer> <silent><expr> <TAB>
             \ pumvisible() ? "\<down>" :
             \ <SID>check_back_space() ? "\<TAB>" :
@@ -108,7 +107,7 @@ endfunction
 "       \ coc#refresh()
 " 
 " 
-" let g:coc_snippet_next = '<tab>'
+""  let g:coc_snippet_next = '<tab>'
 
 
 " Use <C-l> for trigger snippet expand.
@@ -299,6 +298,8 @@ let g:NERDCommentEmptyLines = 1
 
 
 " TODO maybe customize keybinds as well
+" TODO definetely customize keybinds!
+" TODO rebind <leader> ci to <leader>cc (and <leader> cc can go)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -358,6 +359,26 @@ set updatetime=100
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CoC Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:coc_global_extensions = [
+  \ 'coc-marketplace',
+  \ 'coc-json',
+  \ 'coc-yaml',
+  \ 'coc-xml',
+  \ 'coc-pairs',
+  \ 'coc-python',
+  \ 'coc-java',
+  \ 'coc-clangd',
+  \ 'coc-snippets',
+  \ 'coc-vimlsp',
+  \ 'coc-texlab',
+  \ 'coc-html',
+  \ 'coc-css'
+  \ ]
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Start with Vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -372,4 +393,4 @@ set updatetime=100
 " autocmd FileType typescript,js,java :call GoYCM()
 
 " Use CoC for these languages
-" autocmd FileType cpp,cxx,h,hpp,c,python,plaintex :call GoCoc()
+" autocmd FileType cpp,cxx,h,hpp,c,python,tex :call GoCoc()

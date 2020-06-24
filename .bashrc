@@ -117,6 +117,5 @@ if ! shopt -oq posix; then
 fi
 
 export JAVA_HOME=/usr/lib/jvm/jdk-13.0.2/
-export PATH=$PATH:~/.vimpkg/bin
 
 #set -o vi

@@ -296,10 +296,11 @@ let g:NERDAltDelims_java = 1
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 
+" Remapping <leader>cc to use toggle comments instead (I just need that gone)
+map <leader>ci <plug>NERDCommenterComment
 
-" TODO maybe customize keybinds as well
-" TODO definetely customize keybinds!
-" TODO rebind <leader> ci to <leader>cc (and <leader> cc can go)
+" Mapping toggle comment individually (former <leader>ci) to <leader>cc
+map <leader>cc <plug>NERDCommenterInvert
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

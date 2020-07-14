@@ -71,24 +71,20 @@ nmap <leader>gd :Gdiffsplit <CR>
 
 
 
-" ConquerOfCompletion
-" fun! GoCoc()
-
 " using <down> instead of <C-n> that is mapped to <TAB> to make it work with snippets
-inoremap <buffer> <silent><expr> <TAB>
+inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<down>" :
             \ <SID>check_back_space() ? "\<TAB>" :
             \ coc#refresh()
 
 
-inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <buffer> <silent><expr> <C-space> coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <C-space> coc#refresh()
 
-nmap <buffer> <leader>d <Plug>(coc-definition)
-nmap <buffer> <leader>gr <Plug>(coc-references)
-nmap <buffer> <leader>rr <Plug>(coc-rename)
-nmap <buffer> <leader>i <Plug>(coc-implementation)
-" endfun
+nmap <leader>d <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>i <Plug>(coc-implementation)
 
 
 " Abort completion if backspace is pressed

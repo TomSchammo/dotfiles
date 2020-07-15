@@ -30,7 +30,7 @@ set relativenumber
 " no wrap to next line
 set nowrap
 
-" case sensitive searching (?)
+" case sensitive searching
 set smartcase
 
 " incremental search
@@ -299,34 +299,16 @@ map <leader>ci <plug>NERDCommenterComment
 map <leader>cc <plug>NERDCommenterInvert
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" JavaAutocomplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disableing default key bindings
-let g:JavaComplete_EnableDefaultMappings = 0
-
-" java.util imports are at the top of the file
-let g:JavaComplete_ImportOrder = ['java.util']
-
-" Automatically add closing brace
-let g:JavaComplete_ClosingBrace = 1
-
-" Compile Java Program
-autocmd Filetype java set makeprg=javac\ %
-set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-map <F9> :make<Return>:copen<Return>
-map <F10> :cprevious<Return>
-map <F11> :cnext<Return>
-
-" Python run and debugging F10 for debugging F9 to run
-" autocmd Filetype python noremap <buffer> <F10> :exec '!python3 -m pdb' shellescape(@%, 1)<cr>
-autocmd Filetype python nnoremap <buffer> <F9> :exec '!python3' shellescape(@%, 1)<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimspector
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimspector_enable_mappings = 'HUMAN'
+nmap <leader>dd :call vimspector#Launch()<CR>
+nmap <leader>dx :VimspectorReset<CR>
+nmap <leader>de :VimspectorEval
+nmap <leader>dw :VimspectorWatch
+autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

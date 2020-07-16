@@ -356,6 +356,12 @@ let g:coc_global_extensions = [
   \ 'coc-css'
   \ ]
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim for Markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" compile markdown to pdf and open it in the browser
+autocmd FileType markdown nnoremap <leader><F1> :!pandoc % -s -o "%:r".pdf & firefox --new-window "%:p:r".pdf<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Start with Vim

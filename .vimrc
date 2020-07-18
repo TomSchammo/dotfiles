@@ -50,26 +50,6 @@ let g:user_emmet_leader_key='<C-Q>' " trigger key redifened to crtl-Q instead of
 " git
 nmap <leader>gd :Gdiffsplit <CR>
 
-" JavaAutocomplete
-" nmap <leader>i <Plug>(JavaComplete-Imports-AddMissing)
-" nmap <leader>r <Plug>(JavaComplete-Imports-RemoveUnused)
-" nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-ClassInFile)
-
-
-" YouCompleteMe
-" fun! GoYCM()
-"     " YCM go to definition
-"     nnoremap <buffer> <silent> <leader>d :YcmCompleter GoTo<CR> 
-"     " YCM go to Reference
-"     nnoremap <buffer> <silent> <leader>r :YcmCompleter GoToReferences<CR> 
-"     " YCM Rename
-"     nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
-"     " let g:UltiSnipsExpandTrigger="<c-j>"
-"     let g:ycm_use_ultisnips_completer = 0
-" endfun
-
-
-
 
 " using <down> instead of <C-n> that is mapped to <TAB> to make it work with snippets
 inoremap <silent><expr> <TAB>
@@ -183,14 +163,8 @@ Plug 'ap/vim-css-color'
 " vim-snippets
 Plug 'honza/vim-snippets'
 
-" Java Autocopletion
-Plug 'artur-shaik/vim-javacomplete2'
-
 " Conquer of Completion for autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" YouCompleteMe for autocompletion
-" Plug 'ycm-core/YouCompleteMe'
 
 " Vimspector debugger
 Plug 'puremourning/vimspector'
@@ -387,19 +361,3 @@ autocmd FileType python nnoremap <leader><F1> :call Exec_py(@%) <CR>
 " compile markdown to pdf and open it in the browser
 autocmd FileType markdown nnoremap <leader><F1> :!pandoc % -s -o "%:r".pdf & firefox --new-window "%:p:r".pdf<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Start with Vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"opening nerdtree on vim start
-" autocmd vimenter * NERDTree
-
-" Use JavaAutocoplete for Java
-" autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-
-" Use YCM for these languages
-" autocmd FileType typescript,js,java :call GoYCM()
-
-" Use CoC for these languages
-" autocmd FileType cpp,cxx,h,hpp,c,python,tex :call GoCoc()

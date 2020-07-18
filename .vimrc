@@ -212,7 +212,7 @@ set fillchars+=vert:\
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Status Line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set statusline^=%{coc#status()}
+set statusline^=%{coc#status()}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -338,7 +338,7 @@ let g:coc_global_extensions = [
 " That file should either be located in the project root,
 " or in the main package
 " If there is no main file, the current file is executed
-function Exec_py(filename)
+function! Exec_py(filename)
     if filereadable("main.py")
         execute "!python3 main.py"
 

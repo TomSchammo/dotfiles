@@ -74,18 +74,6 @@ function! s:check_back_space() abort
 endfunction
 
 
-
-" CoC-Snippets
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<TAB>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" 
-" 
-""  let g:coc_snippet_next = '<tab>'
-
-
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -335,9 +323,6 @@ let g:coc_global_extensions = [
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Executes the main file of a python project
-" That file should either be located in the project root,
-" or in the main package
-" If there is no main file, the current file is executed
 function! Exec_py(filename)
     if filereadable("main.py")
         execute "!python3 main.py"

@@ -43,7 +43,7 @@ bindsym Mod4+Return exec i3-sensible-terminal
 # start chromium
 bindsym Mod4+g exec "chromium-browser --new-window"
 
-# start chromium
+# start chromium in incognito mode
 bindsym Mod4+Control+g exec "chromium-browser --incognito"
 
 # open a new firefox window
@@ -51,9 +51,6 @@ bindsym Mod4+f exec "firefox --new-window"
 
 # open a new firefox private window
 bindsym Mod4+Control+f exec "firefox --private-window"
-
-# start intellij (I don't think this is valid anymore)
-bindsym Mod4+i exec /usr/local/bin/idea
 
 # kill focused window
 bindsym Mod4+Control+c kill

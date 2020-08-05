@@ -107,9 +107,6 @@ nnoremap <silent> <leader>n :NERDTree<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/autoload/plug.vim')
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
 " Gruvbox Color Scheme
 Plug 'morhetz/gruvbox'
 
@@ -131,11 +128,12 @@ Plug 'mhinz/vim-signify'
 " RipGrep
 Plug 'jremmen/vim-ripgrep'
 
-" CTRL-P
-" Plug 'kien/ctrlp.vim'
+" FZF
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " RTags for C++
-" Plug 'lyuts/vim-rtags'
+Plug 'lyuts/vim-rtags'
 
 " emmet
 Plug 'mattn/emmet-vim'

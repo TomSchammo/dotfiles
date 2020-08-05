@@ -133,9 +133,6 @@ Plug 'tpope/vim-fugitive'
 " Make Git integration prettier
 Plug 'mhinz/vim-signify'
 
-" RipGrep
-Plug 'jremmen/vim-ripgrep'
-
 " CTRL-P
 Plug 'kien/ctrlp.vim'
 

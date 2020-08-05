@@ -125,9 +125,6 @@ Plug 'tpope/vim-fugitive'
 " Make Git integration prettier
 Plug 'mhinz/vim-signify'
 
-" RipGrep
-Plug 'jremmen/vim-ripgrep'
-
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

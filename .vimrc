@@ -24,21 +24,13 @@ set smartindent
 " displays current line number
 set nu
 
-<<<<<<< HEAD
 " displays line numbers relative to the current one
-=======
-" displays numbers relative to the current one
->>>>>>> 06756200493e52cf4d35ef421237a6dfa637fab7
 set relativenumber
 
 " no wrap to next line
 set nowrap
 
-<<<<<<< HEAD
 " case sensitive searching
-=======
-" case sensitive searching (?)
->>>>>>> 06756200493e52cf4d35ef421237a6dfa637fab7
 set smartcase
 
 " incremental search
@@ -55,7 +47,6 @@ let mapleader = " " " remapping <leader> key from '\' to ' '
 " emmet
 let g:user_emmet_leader_key='<C-Q>' " trigger key redifened to crtl-Q instead of ctrl-Y
 
-<<<<<<< HEAD
 " git
 nmap <leader>gd :Gdiffsplit <CR>
 
@@ -77,36 +68,12 @@ nmap <leader>i <Plug>(coc-implementation)
 
 
 " Abort completion if backspace is pressed
-=======
-
-" JavaAutocomplete
-nmap <leader>i <Plug>(JavaComplete-Imports-AddMissing)
-nmap <leader>r <Plug>(JavaComplete-Imports-RemoveUnused)
-nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-ClassInFile)
-
-
-
-" YouCompleteMe
-fun! GoYCM()
-    " YCM go to definition
-    nnoremap <buffer> <silent> <leader>d :YcmCompleter GoTo<CR> 
-    " YCM go to Reference
-    nnoremap <buffer> <silent> <leader>r :YcmCompleter GoToReferences<CR> 
-    " YCM Rename
-    nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
-endfun
-
-
-
-" Idk
->>>>>>> 06756200493e52cf4d35ef421237a6dfa637fab7
 function! s:check_back_space() abort
     let col = col('.') -1
     return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
 
-<<<<<<< HEAD
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -136,24 +103,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-
-=======
-
-" ConquerOfCompletion
-fun! GoCoc()
-    inoremap <buffer> <silent><expr> <TAB>
-                \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<TAB>" :
-                \ coc#refresh()
-
-    inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    inoremap <buffer> <silent><expr> <C-space> coc#refresh()
-
-    nmap <buffer> <leader>d <Plug>(coc-definition)
-    nmap <buffer> <leader>r <Plug>(coc-references)
-    nmap <buffer> <leader>i <Plug>(coc-implementation)
-endfun
->>>>>>> 06756200493e52cf4d35ef421237a6dfa637fab7
 
 " NERDTree
 nnoremap <silent> <leader>n :NERDTree<CR>

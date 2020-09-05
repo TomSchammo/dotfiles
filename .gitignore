@@ -1,2 +1,2 @@
-# Ignore everything
+# Ignore vim swapfiles
 *.sw[a-z]

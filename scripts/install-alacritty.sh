@@ -20,7 +20,8 @@ git clone https://github.com/alacritty/alacritty.git
 cd alacritty
 
 # build alacritty and place it into the right directory
-cargo build --release && sudo cp target/release/alacritty /usr/local/bin/
+cargo build --release
+sudo cp target/release/alacritty /usr/local/bin/
 
 cd ${HOME}
 

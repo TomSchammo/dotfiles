@@ -11,7 +11,7 @@
 ## ncmpcpp.
 ##
 #
-#ncmpcpp_directory = ~/.ncmpcpp
+ncmpcpp_directory = ~/.ncmpcpp
 #
 ##
 ## Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
@@ -22,9 +22,9 @@
 #
 ##### connection settings #####
 #
-mpd_host = localhost
+mpd_host = "localhost"
 #
-mpd_port = 6666
+mpd_port = "6666"
 #
 #mpd_connection_timeout = 5
 #

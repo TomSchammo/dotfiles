@@ -37,8 +37,11 @@ set $right h
 # use Mouse+Mod4 to drag floating windows to their wanted position
 floating_modifier Mod4
 
+# start tmux
+bindsym Mod4+Return exec alacritty -e tmux
+
 # start a terminal
-bindsym Mod4+Return exec i3-sensible-terminal
+bindsym Control+Mod1+Return exec i3-sensible-terminal
 
 # start chromium
 bindsym Mod4+g exec "chromium-browser --new-window"
@@ -47,13 +50,33 @@ bindsym Mod4+g exec "chromium-browser --new-window"
 bindsym Mod4+Control+g exec "chromium-browser --incognito"
 
 # open a new firefox window
-bindsym Mod4+f exec "firefox --new-window"
+# bindsym Mod4+f exec "firefox --new-window"
 
 # open a new firefox private window
-bindsym Mod4+Control+f exec "firefox --private-window"
+bindsym Mod4+Control+f exec "firefox --new-window"
+
+# suspend system
+bindsym Mod1+Control+q exec systemctl suspend
+
+# open file browser
+bindsym Mod1+e exec thunar
+
+# take screenshot
+bindsym Mod1+Control+s exec flameshot gui -p ~/Pictures/Screenshots
 
 # kill focused window
 bindsym Mod4+Control+c kill
+
+# lock screen
+bindsym Mod4+q exec lock -i ~/Pictures/Wallpapers/f19972532794e618.jpg
+
+# launch rofi to select windows
+bindsym Mod1+Tab exec rofi -show window
+
+# change brightness levels
+# brightnessctl -d intel_backlight -c backlight s 10%+
+# brightnessctl -d intel_backlight -c backlight s 10%-
+
 
 # start rofi application launcher
 bindsym Mod4+p exec rofi -show run
@@ -96,7 +119,7 @@ bindsym Mod4+b split h
 bindsym Mod4+v split v
 
 # enter fullscreen mode for the focused container
-bindsym Mod1+f fullscreen toggle
+bindsym Mod4+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym Mod4+s layout stacking
@@ -208,6 +231,12 @@ bindsym XF86AudioStop exec mpc stop
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# set some nice colors      border     background  text
+client.focused              #1a1a1a 	#98971a	#ebdbb2
+client.unfocused            #1a1a1a 	#1a1a1a	#ebdbb2
+client.focused_inactive            #1a1a1a 	#1a1a1aB3	#ffffff
+#client.urgent               $rd        $rd         $tx
+
 # colour of border, background, text, indicator, and child_border
 # client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
 # client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
@@ -218,9 +247,28 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# bar {
-#         status_command i3status
-# }
+bar {
+        position top
+        # status_command i3status
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        # separator_symbol " "
+
+        # colors {
+            # statusline #cccccc
+            # background #2b2b2b
+# 
+            # #border background text
+            # focused_workspace #cccccc #2e2e2e #cccccc
+            # active_workspace #cccccc #2e2e2e #cccccc
+            # inactive_workspace #2e2e2e #2e2e2e #cccccc
+            # urgent_workspace #ff2003 #ffffff #ff2003
+        # }
+}
+
+# gaps inner 5
+# gaps outer 5
+
+focus_follows_mouse no
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a

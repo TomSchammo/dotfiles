@@ -35,9 +35,6 @@ set nohlsearch
 " remapping <leader> key from '\' to ' '
 let mapleader = " "
 
-" emmet
-let g:user_emmet_leader_key='<C-Q>' " trigger key redifened to crtl-Q instead of ctrl-Y
-
 " git
 nmap <leader>gd :Gdiffsplit <CR>
 
@@ -131,9 +128,6 @@ Plug 'junegunn/fzf.vim'
 
 " RTags for C++
 Plug 'lyuts/vim-rtags'
-
-" emmet
-Plug 'mattn/emmet-vim'
 
 " CSS-Color
 Plug 'ap/vim-css-color'
@@ -281,6 +275,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-texlab',
   \ 'coc-html',
+  \ 'coc-emmet',
   \ 'coc-css'
   \ ]
 

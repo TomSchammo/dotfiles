@@ -276,7 +276,9 @@ let g:coc_global_extensions = [
   \ 'coc-texlab',
   \ 'coc-html',
   \ 'coc-emmet',
-  \ 'coc-css'
+  \ 'coc-css',
+  \ 'coc-spell-checker',
+  \ 'coc-cspell-dicts'
   \ ]
 
 

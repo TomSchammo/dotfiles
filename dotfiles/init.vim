@@ -314,3 +314,11 @@ autocmd FileType python nnoremap <leader><F1> :call Exec_py(@%) <CR>
 " compile markdown to pdf and open it in the browser
 autocmd FileType markdown nnoremap <leader><F1> :!pandoc % -s -o "%:r".pdf & brave --new-window "%:p:r".pdf<CR>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim for LaTeX
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" compile tex file to pdf and open it in the browser
+autocmd FileType tex nnoremap <leader><F1> :!pdflatex % & brave --new-window "%:p:r".pdf<CR>
+

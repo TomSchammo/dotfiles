@@ -56,10 +56,10 @@ bindsym Mod4+Control+g exec "brave --incognito"
 bindsym Mod4+Control+f exec "firefox --new-window"
 
 # suspend system
-bindsym Mod1+Control+q exec systemctl suspend
+bindsym Mod1+Control+q exec lock -i ~/Pictures/Wallpapers/f19972532794e618.jpg && systemctl suspend
 
 # open file browser
-bindsym Mod1+e exec thunar
+bindsym Mod4+e exec thunar
 
 # take screenshot
 bindsym Mod1+Control+s exec flameshot gui -p ~/Pictures/Screenshots
@@ -74,8 +74,8 @@ bindsym Mod4+q exec lock -i ~/Pictures/Wallpapers/f19972532794e618.jpg
 bindsym Mod1+Tab exec rofi -show window
 
 # change brightness levels
-# brightnessctl -d intel_backlight -c backlight s 10%+
-# brightnessctl -d intel_backlight -c backlight s 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight -c backlight s 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight -c backlight s 5%-
 
 
 # start rofi application launcher

@@ -145,6 +145,8 @@ bindsym Mod4+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym Mod4+minus scratchpad show
 
+
+
 # switch to workspace
 bindsym Mod4+1 workspace 1
 bindsym Mod4+2 workspace 2
@@ -228,18 +230,18 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
 
 # music control
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPrev exec mpc prev
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioNext exec mpc --host=localhost --port=6666 next
+bindsym XF86AudioPrev exec mpc --host=localhost --port=6666 prev
+bindsym XF86AudioPlay exec mpc --host=localhost --port=6666 toggle
+bindsym XF86AudioStop exec mpc --host=localhost --port=6666 stop
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# set some nice colors      border     background  text
-client.focused              #1a1a1a 	#98971a	#ebdbb2
-client.unfocused            #1a1a1a 	#1a1a1a	#ebdbb2
-client.focused_inactive            #1a1a1a 	#1a1a1aB3	#ffffff
-#client.urgent               $rd        $rd         $tx
+# set some nice colors      border     background       text
+client.focused              #1a1a1a 	#98971a	        #ebdbb2
+client.unfocused            #1a1a1a 	#1a1a1a	        #ebdbb2
+client.focused_inactive     #1a1a1a 	#1a1a1aB3	    #ffffff
+#client.urgent               $rd        $rd             $tx
 
 # colour of border, background, text, indicator, and child_border
 # client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8

@@ -169,6 +169,10 @@ bindsym Mod4+Shift+8 move container to workspace 8
 bindsym Mod4+Shift+9 move container to workspace 9
 bindsym Mod4+Shift+0 move container to workspace 10
 
+# move workspaces to other monitors
+bindsym Mod1+Ctrl+plus move workspace to output right
+bindsym Mod1+Ctrl+minus move workspace to output left
+
 # Media keys
 # Pulse Audio controls
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume

@@ -276,6 +276,13 @@ bar {
 
 focus_follows_mouse no
 
+# Note taker
+for_window [ title="notetaker_window" ] floating enable
+for_window [ title="notetaker_window" ] border pixel 1
+
+bindsym Mod4+n exec alacritty -t notetaker_window -e /home/tom/.local/bin/notetaker
+
+
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)

@@ -112,19 +112,19 @@ bindsym Mod4+Shift+Down move down
 bindsym Mod4+Shift+Up move up
 bindsym Mod4+Shift+Right move right
 
-# split in horizontal orientation
-bindsym Mod4+b split h
-
 # split in vertical orientation
-bindsym Mod4+v split v
+bindsym Mod4+b split v
+
+# split in horizontal orientation
+bindsym Mod4+v split h
 
 # enter fullscreen mode for the focused container
 bindsym Mod4+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod4+s layout stacking
+bindsym Mod1+e layout stacking
 bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout toggle split
+bindsym Mod4+s layout toggle split
 
 # toggle tiling / floating
 bindsym Mod4+Shift+space floating toggle
@@ -259,16 +259,16 @@ bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         # separator_symbol " "
 
-        # colors {
-            # statusline #cccccc
-            # background #2b2b2b
-# 
-            # #border background text
-            # focused_workspace #cccccc #2e2e2e #cccccc
-            # active_workspace #cccccc #2e2e2e #cccccc
-            # inactive_workspace #2e2e2e #2e2e2e #cccccc
-            # urgent_workspace #ff2003 #ffffff #ff2003
-        # }
+        colors {
+            statusline #cccccc
+            background #2b2b2b
+
+            #                   border      background      text
+            focused_workspace   #cccccc     #2e2e2e         #cccccc
+            active_workspace    #cccccc     #2e2e2e         #cccccc
+            inactive_workspace  #2e2e2e     #2e2e2e         #cccccc
+            urgent_workspace    #ff2003     #ffffff         #ff2003
+        }
 }
 
 # gaps inner 5

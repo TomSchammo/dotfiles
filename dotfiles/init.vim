@@ -28,6 +28,7 @@ set nowrap
 " turn search highliting off
 set nohlsearch
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -55,6 +56,8 @@ nmap <leader>d <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>i <Plug>(coc-implementation)
+
+nmap <leader>s :CocSearch
 
 
 " Abort completion if backspace is pressed
@@ -98,6 +101,9 @@ endfunction
 " NERDTree
 nnoremap <silent> <leader>n :NERDTree<CR>
 
+" Spellchecker
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -112,6 +118,9 @@ Plug 'preservim/nerdtree'
 
 " NERDCommenter
 Plug 'preservim/nerdcommenter'
+
+" vim-surround
+Plug 'tpope/vim-surround'
 
 " Vim Man Page
 Plug 'vim-utils/vim-man'
@@ -146,7 +155,6 @@ Plug 'vim-airline/vim-airline'
 
 " Themes for vim-ariline
 Plug 'vim-airline/vim-airline-themes'
-
 
 call plug#end()
 
@@ -293,13 +301,13 @@ let g:coc_global_extensions = [
 " If there is no main file, the current file is executed
 function! Exec_py(filename)
     if filereadable("main.py")
-        execute "!python3 main.py"
+        execute "sp | resize 20 | term python main.py"
 
     elseif filereadable("main/main.py")
-        execute "!python3 main/main.py"
+        execute "sp | resize 20 | term python main/main.py"
 
     else
-        execute "!python3 " . shellescape(a:filename)
+        execute "sp | resize 20 | term python " . shellescape(a:filename)
 
     endif
 endfunction
@@ -308,17 +316,56 @@ autocmd FileType python nnoremap <leader><F1> :call Exec_py(@%) <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Function to compile documents (supports md and tex)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function Recompile_Document(filename, type)
+    let l:out = systemlist("ps -eo command | grep -E 'zathura " . fnamemodify(a:filename, ":r") . ".pdf'")[0]
+
+    " if the pdf is already opened it will be recompiled
+    if "zathura " . fnamemodify(a:filename, ":r") . ".pdf" =~ l:out
+
+        " compile markdown to pdf
+        if (a:type =~ "pdf")
+            execute system("pandoc " . shellescape(a:filename) . " -s -o " . fnamemodify(a:filename, ":r") . ".pdf")
+
+        " compile latex to pdf and clean directory
+        elseif (a:type =~ "tex")
+            execute system("pdflatex " . shellescape(a:filename) . " -file-line-error -halt-on-error")
+            execute system("rm *.log *.out *.aux")
+        endif
+    endif
+
+endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim for Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" compile markdown to pdf and open it in the browser
-autocmd FileType markdown nnoremap <leader><F1> :!pandoc % -s -o "%:r".pdf & brave --new-window "%:p:r".pdf<CR>
+" compile markdown to pdf and open it in zathura
+autocmd BufWritePost *.md silent call Recompile_Document(@%, "pdf")
+autocmd FileType markdown nnoremap <leader><F1> :!pandoc % -s -o "%:r".pdf && zathura "%:r".pdf&<CR>
+" TODO
+" autocmd FileType markdown nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pandoc % -s -o "%:r".pdf && zathura "%:p:r".pdf&<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim for LaTeX
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" compile tex file to pdf and open it in the browser
-autocmd FileType tex nnoremap <leader><F1> :!pdflatex % & brave --new-window "%:p:r".pdf<CR>
+" compile tex file to pdf and open it in zathura
+autocmd BufWritePost *.tex silent call Recompile_Document(@%, "tex")
+autocmd FileType tex nnoremap <leader><F1> :!pdflatex % && zathura "%:p:r".pdf&<CR>
+" TODO
+" autocmd FileType tex nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pdflatex % && zathura "%:p:r".pdf<CR>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim for QML
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TODO syntax highliting and completion
+
+" open qml file
+au BufNewFile,BufRead *.qml set filetype=qml
+autocmd FileType qml nnoremap <leader><F1> :sp | resize 20 | term qml % <CR>

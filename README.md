@@ -2,10 +2,10 @@
 
 ## About
 
-This folder contains all the dotfiles that I have changed or added when I moved from Mint to Arch.
+This branch contains all the dotfiles that I have changed or added when I moved from Mint to Arch.
 
-They will probably be integrated into my main dotfiles (at least some of them, since the i3 config is universal for example),
-and merge the branches, but I'll have them seperated for now until I clean things up.
+They will probably be integrated/merged into my main branch eventually (at least some of them, since the i3 config is universal for example),
+but I'll have them separated for now until I clean things up.
 
 # Setup
 

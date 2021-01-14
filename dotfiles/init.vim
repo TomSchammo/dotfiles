@@ -279,6 +279,7 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-java',
   \ 'coc-clangd',
+  \ 'coc-cmake',
   \ 'coc-snippets',
   \ 'coc-vimlsp',
   \ 'coc-texlab',

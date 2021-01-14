@@ -136,10 +136,14 @@ npm install -g neovim
 # python3 is needed for some plugings
 sudo ${PKG_MNGR_INSTALL} python3 python3-pip
 
-# this is required for python plugins working with neovim?
+# this is required for python plugins working with neovim
 python3 -m pip install wheel
 python3 -m pip install setuptools
 python3 -m pip install neovim
+
+# cmake language server
+python3 -m pip install cmake-language-server
+python3 -m pip install cmakelang
 
 # this is required to support clipboard operations
 sudo ${PKG_MNGR_INSTALL} xclip
@@ -190,7 +194,82 @@ mv init.vim ${HOME}/.config/nvim/
   "java.jdt.ls.vmargs": "-javaagent:/home/tom/.m2/repository/org/projectlombok/lombok/1.18.10/lombok-1.18.10.jar",
   "clangd.path": "/home/tom/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
   "cSpellExt.enableDictionaries": ["german"],
-  "cSpell.language": "de,en"
+  "cSpell.language": "de,en",
+  "cSpell.userWords": [],
+  "languageserver": {
+    "cmake": {
+      "command": "cmake-language-server",
+      "filetypes": ["cmake"],
+      "rootPatterns": [
+        "build/"
+      ],
+      "initializationOptions": {
+        "buildDirectory": "build"
+      }
+    }
+  },
+  "cmake.cmakePath": {
+    "type": "string",
+    "default": "cmake",
+    "description": "Path to CMake generator executable"
+  },
+  "cmake.formatter": {
+    "type": "string",
+    "default": "cmake-format",
+    "description": "Path to [cmake-format](https://github.com/cheshirekow/cmake_format)"
+  },
+  "cmake.lsp.enable": {
+    "type": "boolean",
+    "default": false,
+    "description": "Enable language server(https://github.com/regen100/cmake-language-server), Notice that the functionality(completion, formatting, etc.) of lsp and extension builtin can not coexist"
+  },
+  "cmake.lsp.serverPath": {
+    "type": "string",
+    "default": "cmake-language-server",
+    "description": "Path to [cmake-language-server](https://github.com/regen100/cmake-language-server)"
+  },
+  "cmake.lsp.buildDirectory": {
+    "type": "string",
+    "default": "build",
+    "description": "See https://github.com/regen100/cmake-language-server#configuration"
+  }
+  "languageserver": {
+    "cmake": {
+      "command": "cmake-language-server",
+      "filetypes": ["cmake"],
+      "rootPatterns": [
+        "build/"
+      ],
+      "initializationOptions": {
+        "buildDirectory": "build"
+      }
+    }
+  },
+  "cmake.cmakePath": {
+    "type": "string",
+    "default": "cmake",
+    "description": "Path to CMake generator executable"
+  },
+  "cmake.formatter": {
+    "type": "string",
+    "default": "cmake-format",
+    "description": "Path to [cmake-format](https://github.com/cheshirekow/cmake_format)"
+  },
+  "cmake.lsp.enable": {
+    "type": "boolean",
+    "default": false,
+    "description": "Enable language server(https://github.com/regen100/cmake-language-server), Notice that the functionality(completion, formatting, etc.) of lsp and extension builtin can not coexist"
+  },
+  "cmake.lsp.serverPath": {
+    "type": "string",
+    "default": "cmake-language-server",
+    "description": "Path to [cmake-language-server](https://github.com/regen100/cmake-language-server)"
+  },
+  "cmake.lsp.buildDirectory": {
+    "type": "string",
+    "default": "build",
+    "description": "See https://github.com/regen100/cmake-language-server#configuration"
+  }
 }
 EOF
 ) > ${HOME}/.config/nvim/coc-settings.json

@@ -191,11 +191,12 @@ mv init.vim ${HOME}/.config/nvim/
 # generating coc-settings.json
 (cat <<EOF
 {
-  "java.jdt.ls.vmargs": "-javaagent:/home/tom/.m2/repository/org/projectlombok/lombok/1.18.10/lombok-1.18.10.jar",
-  "clangd.path": "/home/tom/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "java.jdt.ls.vmargs": "-javaagent:${HOME}/.m2/repository/org/projectlombok/lombok/1.18.10/lombok-1.18.10.jar",
+  "clangd.path": "${HOME}/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
   "cSpellExt.enableDictionaries": ["german"],
   "cSpell.language": "de,en",
   "cSpell.userWords": [],
+  "snippets.userSnippetsDirectory": "${HOME}/.config/nvim/custom_snippets",
   "languageserver": {
     "cmake": {
       "command": "cmake-language-server",

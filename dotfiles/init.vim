@@ -370,3 +370,12 @@ autocmd FileType tex nnoremap <leader><F1> :!pdflatex % && zathura "%:p:r".pdf&<
 " open qml file
 au BufNewFile,BufRead *.qml set filetype=qml
 autocmd FileType qml nnoremap <leader><F1> :sp | resize 20 | term qml % <CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Local changes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable("./.nvimrc")
+    " source local nvimrc if it exists
+    source ./.nvimrc
+endif

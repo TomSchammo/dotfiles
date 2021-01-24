@@ -182,6 +182,9 @@ sudo ${PKG_MNGR_INSTALL} zathura
 # TODO 2. check if init.vim has already been downloaded
 wget https://raw.githubusercontent.com/TomSchammo/dotfiles/master/dotfiles/init.vim
 
+# TODO check if snippets have been downloaded if not, get them
+# TODO move snippets into nvim dir
+
 # creating directory for init.vim
 mkdir -p ${HOME}/.config/nvim/
 

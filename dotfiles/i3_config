@@ -26,6 +26,12 @@ font pango: terminus-font 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# border style
+default_border pixel 1
+default_floating_border normal
+
+# hide borders
+hide_edge_borders none
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -193,8 +199,10 @@ bindsym Mod1+Ctrl+minus move workspace to output left
 
 # reload the configuration file
 bindsym Mod4+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Mod4+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -271,16 +279,34 @@ bar {
         }
 }
 
-# gaps inner 5
-# gaps outer 5
+# hide/unhide i3status bar
+bindsym Mod4+m bar mode toggle
 
 focus_follows_mouse no
 
-# Note taker
+##############
+# Note taker #
+##############
+
 for_window [ title="notetaker_window" ] floating enable
 for_window [ title="notetaker_window" ] border pixel 1
 
 bindsym Mod4+n exec alacritty -t notetaker_window -e /home/tom/.local/bin/notetaker
+# bindsym Mod4+Shift+n exec mostRecentNote
+
+####################
+# i3-gaps settings #
+####################
+
+# TODO
+
+# Inner/Outer gaps
+gaps inner 14
+gaps outer -2
+
+# Smart gaps/borders
+smart_gaps on
+smart_borders on
 
 
 #######################################################################

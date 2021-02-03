@@ -28,6 +28,8 @@ set nowrap
 " turn search highliting off
 set nohlsearch
 
+" turn vim into a hex editor (and turn it back with -r)
+command! -nargs=* Hex execute "%!xxd <args>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings

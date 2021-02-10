@@ -54,4 +54,7 @@ xplugd
 nitrogen --restore &
 redhift -c ~/.config/redshift.conf &
 picom &
+# starting gnome keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 exec i3

@@ -37,10 +37,15 @@ setxkbmap -model thinkpad -layout ch -variant de_nodeadkeys
 
 nm-applet &
 xplugd
-nitrogen --restore &
 
+# starting redhift for warmer colors
 redhift -c ~/.config/redshift.conf &
-picom &
+
+# starting compositor
+picom -D 10 -f -i 1 -I 0.1 -O 0.1 &
+
+# starting xfce4 power manager to avoid system freezin up
+xfce4-power-manager&
 
 # starting gnome keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)

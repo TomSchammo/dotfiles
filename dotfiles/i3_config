@@ -26,6 +26,12 @@ font pango: terminus-font 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# setting background image
+set $background ~/Pictures/Wallpapers/city_pixelart.png
+
+# caching background image
+exec betterlockscreen -u $background
+
 # border style
 default_border pixel 1
 default_floating_border normal
@@ -62,7 +68,8 @@ bindsym Mod4+Control+g exec "brave --incognito"
 bindsym Mod4+Control+f exec "firefox --new-window"
 
 # suspend system
-bindsym Mod1+Control+q exec lock -i ~/Pictures/Wallpapers/f19972532794e618.jpg && systemctl suspend
+# bindsym Mod1+Control+q exec lock -i $background && systemctl suspend
+bindsym Mod1+Control+q exec betterlockscreen -s
 
 # open file browser
 bindsym Mod4+e exec thunar
@@ -74,7 +81,7 @@ bindsym Mod1+Control+s exec flameshot gui -p ~/Pictures/Screenshots
 bindsym Mod4+Control+c kill
 
 # lock screen
-bindsym Mod4+q exec lock -i ~/Pictures/Wallpapers/f19972532794e618.jpg
+bindsym Mod4+q exec betterlockscreen -l
 
 # launch rofi to select windows
 bindsym Mod1+Tab exec rofi -show window
@@ -308,6 +315,7 @@ gaps outer -2
 smart_gaps on
 smart_borders on
 
+exec --no-startup-id feh --bg-scale $background
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a

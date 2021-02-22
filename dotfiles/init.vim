@@ -28,6 +28,13 @@ set nowrap
 " turn search highliting off
 set nohlsearch
 
+" Highlight trailing whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " turn vim into a hex editor (and turn it back with -r)
 command! -nargs=* Hex execute "%!xxd <args>"
 

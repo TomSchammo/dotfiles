@@ -45,6 +45,9 @@ command! -nargs=* Hex execute "%!xxd <args>"
 " remapping <leader> key from '\' to ' '
 let mapleader = " "
 
+" remapping <C-\><C-N> (normal mode in terminal) to <Esc>
+tnoremap <Esc> <C-\><C-N>
+
 " git
 nmap <leader>gd :Gdiffsplit <CR>
 

@@ -94,6 +94,12 @@ bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight -c backlight
 # start rofi application launcher
 bindsym Mod4+p exec rofi -show run
 
+# Make currently focused window a scratchpad
+bindsym Control+Shift+0 move scratchpad
+
+# Toggle first scratchpad
+bindsym Control+Shift+m scratchpad show
+
 # start dmenu (a program launcher)
 bindsym Mod4+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications

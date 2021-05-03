@@ -101,7 +101,7 @@ bindsym Control+Shift+0 move scratchpad
 bindsym Control+Shift+m scratchpad show
 
 # start dmenu (a program launcher)
-bindsym Mod4+d exec dmenu_run
+# bindsym Mod4+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.

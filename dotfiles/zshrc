@@ -13,6 +13,11 @@ export VISUAL=nvim
 export TERM=alacritty
 export TERMINAL=alacritty
 
+# Comment the generic variables above and uncomment
+# this if there are issues whith weird behavior
+# export TERM=xterm
+
+
 PROMPT='%B%F{blue}%~%f%F{cyan}%f%b '
 
 # '%' if user has no elevated privileges,

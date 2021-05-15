@@ -32,7 +32,13 @@ sudo ${PKG_MNGR_INSTALL} zsh
 # installing git to clone plugins
 sudo ${PKG_MNGR_INSTALL} git
 
-mv dotfiles/zshrc ~/.zshrc
+if [ -f dotfiles/zshrc ]; then
+    mv dotfiles/zshrc ~/.zshrc
+else
+    wget https://raw.githubusercontent.com/TomSchammo/dotfiles/arch/dotfiles/zshrc
+    mv zshrc ~/.zshrc
+fi
+
 
 CURRENT_IDR=${pwd}
 

@@ -63,7 +63,8 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Exports
-export PATH=$HOME/.scripts:/usr/local/bin:$PATH
+export PATH="$HOME/.scripts:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config/"
 export BACKGROUND='/home/tom/Pictures/Wallpapers/city_pixelart.png'
 

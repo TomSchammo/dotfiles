@@ -18,7 +18,13 @@ export TERMINAL=alacritty
 # export TERM=xterm
 
 
+DISABLE_AUTO_TITLE="true"
 PROMPT='%B%F{blue}%~%f%F{cyan}%f%b '
+
+# set window title to working directory
+precmd() {
+    eval 'echo -ne "\e]2;$(pwd)\e\\"'
+}
 
 # '%' if user has no elevated privileges,
 # '#' if he does

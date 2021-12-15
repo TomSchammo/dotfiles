@@ -41,6 +41,9 @@ command! -nargs=* Hex execute "%!xxd <args>"
 " Remove any trailing whitespace
 command! Clean execute ":%s/  *$//g"
 
+" Source init.vim
+command! Reload execute ":source ~/.config/nvim/init.vim"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

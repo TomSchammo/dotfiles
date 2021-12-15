@@ -122,7 +122,7 @@ nmap <leader>a <Plug>(coc-codeaction-selected)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.config/nvim/autoload/plug.vim')
+call plug#begin('~/.config/nvim/plugins')
 
 " Gruvbox Color Scheme
 Plug 'morhetz/gruvbox'

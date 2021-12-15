@@ -296,7 +296,6 @@ let g:coc_global_extensions = [
   \ 'coc-yaml',
   \ 'coc-xml',
   \ 'coc-pairs',
-  \ 'coc-python',
   \ 'coc-java',
   \ 'coc-clangd',
   \ 'coc-cmake',

@@ -376,7 +376,7 @@ endfunction
 
 " compile markdown to pdf and open it in zathura
 autocmd BufWritePost *.md silent call Recompile_Document(@%, "pdf")
-autocmd FileType markdown nnoremap <leader><F1> :!pandoc % -s -o "%:r".pdf && zathura "%:r".pdf&<CR>
+autocmd FileType markdown nnoremap <leader><F1> :!pandoc --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR>
 " TODO
 " autocmd FileType markdown nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pandoc % -s -o "%:r".pdf && zathura "%:p:r".pdf&<CR>
 
@@ -409,3 +409,10 @@ if filereadable("./.nvimrc")
     " source local nvimrc if it exists
     source ./.nvimrc
 endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IP Scan
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" command! Scan execute ":0read !nmap -sP 192.168.178.0/24"
+command! Scan execute ":0read !nmap -sP 192.168.178.0/24 | sed -n 0~2p | head -n -1 | cut -d' ' -f5- | awk -F' ' '{print $2, $1}' | sed 's/(//' | sed 's/)/:/'"

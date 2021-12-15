@@ -44,6 +44,18 @@ command! Clean execute ":%s/  *$//g"
 " Source init.vim
 command! Reload execute ":source ~/.config/nvim/init.vim"
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fold settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd FileType c,cpp,java set foldmethod=syntax
+
+autocmd FileType python set foldmethod=indent
+
+" open all folds
+autocmd FileType c,cpp,java,python set foldlevel=999
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

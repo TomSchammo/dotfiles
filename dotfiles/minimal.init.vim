@@ -38,6 +38,25 @@ autocmd BufWinLeave * call clearmatches()
 " turn vim into a hex editor (and turn it back with -r)
 command! -nargs=* Hex execute "%!xxd <args>"
 
+" Remove any trailing whitespace
+command! Clean execute ":%s/  *$//g"
+
+" Source init.vim
+command! Reload execute ":source ~/.config/nvim/init.vim"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fold settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd FileType c,cpp,java set foldmethod=syntax
+
+autocmd FileType python set foldmethod=indent
+
+" open all folds
+autocmd FileType c,cpp,java,python set foldlevel=999
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -132,6 +151,18 @@ map <leader>cc <plug>NERDCommenterInvert
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim for C++
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" switching from headers to source files in cpp
+nnoremap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
+" To let vim know where to look for (header) files
+let &path.="src/include,/usr/include/AL,/opt/ros/melodic/include"
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim for Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -162,3 +193,10 @@ if filereadable("./.nvimrc")
     " source local nvimrc if it exists
     source ./.nvimrc
 endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IP Scan
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" command! Scan execute ":0read !nmap -sP 192.168.178.0/24"
+command! Scan execute ":0read !nmap -sP 192.168.178.0/24 | sed -n 0~2p | head -n -1 | cut -d' ' -f5- | awk -F' ' '{print $2, $1}' | sed 's/(//' | sed 's/)/:/'"

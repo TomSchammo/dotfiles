@@ -38,6 +38,9 @@ autocmd BufWinLeave * call clearmatches()
 " turn vim into a hex editor (and turn it back with -r)
 command! -nargs=* Hex execute "%!xxd <args>"
 
+" Remove any trailing whitespace
+command! Clean execute ":%s/  *$//g"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

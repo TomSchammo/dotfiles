@@ -487,6 +487,8 @@ background_opacity: 1.0
 #  - { mouse: Middle, action: PasteSelection }
 
 # Key bindings
+key_bindings:
+  - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
 #
 # Key bindings are specified as a list of objects. For example, this is the
 # default paste binding:

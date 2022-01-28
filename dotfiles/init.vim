@@ -355,13 +355,13 @@ let &path.="src/include,/usr/include/AL,/opt/ros/melodic/include"
 " If there is no main file, the current file is executed
 function! Exec_py(filename)
     if filereadable("main.py")
-        execute "sp | resize 20 | term python main.py"
+        execute "sp | resize 20 | term python3 main.py"
 
     elseif filereadable("main/main.py")
-        execute "sp | resize 20 | term python main/main.py"
+        execute "sp | resize 20 | term python3 main/main.py"
 
     else
-        execute "sp | resize 20 | term python " . shellescape(a:filename)
+        execute "sp | resize 20 | term python3 " . shellescape(a:filename)
 
     endif
 endfunction

@@ -381,7 +381,7 @@ function Recompile_Document(filename, type)
 
         " compile markdown to pdf
         if (a:type =~ "pdf")
-            execute system("pandoc " . shellescape(a:filename) . " -s -o " . fnamemodify(a:filename, ":r") . ".pdf")
+            execute system("pandoc -f markdown-implicit_figures " . shellescape(a:filename) . " -s -o " . fnamemodify(a:filename, ":r") . ".pdf")
 
         " compile latex to pdf and clean directory
         elseif (a:type =~ "tex")
@@ -402,7 +402,7 @@ autocmd BufWritePost *.md silent call Recompile_Document(@%, "pdf")
 autocmd FileType markdown nnoremap <leader><F1> :!pandoc --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR>
 " TODO
 " autocmd FileType markdown nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pandoc % -s -o "%:r".pdf && zathura "%:p:r".pdf&<CR>
-
+" -V fontenc=T2A
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim for LaTeX

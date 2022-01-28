@@ -128,6 +128,8 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Quickfix Suggestion
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 
 " NERDTree

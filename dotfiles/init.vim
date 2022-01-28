@@ -36,7 +36,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " turn vim into a hex editor (and turn it back with -r)
-command! -nargs=* Hex execute "%!xxd <args>"
+command! -nargs=* Hex execute "%!xxd <args>" | set ft=xxd
 
 " Remove any trailing whitespace
 command! Clean execute ":%s/  *$//g"

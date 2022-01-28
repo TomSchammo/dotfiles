@@ -170,7 +170,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " RTags for C++
-Plug 'lyuts/vim-rtags'
+" Plug 'lyuts/vim-rtags'
 
 " CSS-Color
 Plug 'ap/vim-css-color'
@@ -178,17 +178,25 @@ Plug 'ap/vim-css-color'
 " vim-snippets
 Plug 'honza/vim-snippets'
 
+
 " Conquer of Completion for autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
 " Vimspector debugger
 Plug 'puremourning/vimspector'
+
+" Codi for scratchpad and virtual text
+Plug 'metakirby5/codi.vim'
 
 " vim-ariline status bar
 Plug 'vim-airline/vim-airline'
 
 " Themes for vim-ariline
 Plug 'vim-airline/vim-airline-themes'
+
+" vim signature to manage marks
+Plug 'kshenoy/vim-signature'
 
 call plug#end()
 

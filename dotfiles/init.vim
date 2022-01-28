@@ -320,6 +320,7 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \ 'coc-java',
   \ 'coc-clangd',
+  \ 'coc-rust-analyzer',
   \ 'coc-cmake',
   \ 'coc-snippets',
   \ 'coc-vimlsp',
@@ -422,6 +423,14 @@ autocmd FileType tex nnoremap <leader><F1> :!pdflatex % && zathura "%:p:r".pdf&<
 " open qml file
 au BufNewFile,BufRead *.qml set filetype=qml
 autocmd FileType qml nnoremap <leader><F1> :sp | resize 20 | term qml % <CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim for Rust
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" autocmd FileType rust nnoremap <leader><F1> :sp | resize 20 | term cargo run <CR>
+autocmd FileType rust nnoremap <leader><F1> :!cargo run<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

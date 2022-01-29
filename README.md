@@ -10,4 +10,6 @@ and work, or work on both Debian and Arch.
 
 ## Scripts 
 
-Scripts in the master branch should work on Debian as well as Arch based systems.
+~~Scripts in the master branch should work on Debian as well as Arch based systems.~~
+
+Scripts are a little bit wonky overall, I'll have to fix those as some point...

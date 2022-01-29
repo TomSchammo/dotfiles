@@ -132,12 +132,10 @@ endfunction
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 
-" NERDTree
-nnoremap <silent> <leader>n :NERDTree<CR>
-
 " Spellchecker
 vmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -146,9 +144,6 @@ call plug#begin('~/.config/nvim/plugins')
 
 " Gruvbox Color Scheme
 Plug 'morhetz/gruvbox'
-
-" NERDTree
-Plug 'preservim/nerdtree'
 
 " NERDCommenter
 Plug 'preservim/nerdcommenter'
@@ -178,13 +173,8 @@ Plug 'ap/vim-css-color'
 " vim-snippets
 Plug 'honza/vim-snippets'
 
-
 " Conquer of Completion for autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-
-" Vimspector debugger
-Plug 'puremourning/vimspector'
 
 " Codi for scratchpad and virtual text
 Plug 'metakirby5/codi.vim'
@@ -272,16 +262,6 @@ map <leader>cc <plug>NERDCommenterInvert
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimspector
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimspector_enable_mappings = 'HUMAN'
-nmap <leader>dd :call vimspector#Launch()<CR>
-nmap <leader>dx :VimspectorReset<CR>
-nmap <leader>de :VimspectorEval
-nmap <leader>dw :VimspectorWatch
-autocmd Filetype java nmap <leader>dd :CocCommand java.debug.vimspector.start<CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RipGrep
@@ -342,7 +322,6 @@ nnoremap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " To let vim know where to look for (header) files
 let &path.="src/include,/usr/include/AL,/opt/ros/melodic/include"
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -447,3 +426,4 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " command! Scan execute ":0read !nmap -sP 192.168.178.0/24"
 command! Scan execute ":0read !nmap -sP 192.168.178.0/24 | sed -n 0~2p | head -n -1 | cut -d' ' -f5- | awk -F' ' '{print $2, $1}' | sed 's/(//' | sed 's/)/:/'"
+

@@ -66,6 +66,8 @@ let mapleader = " "
 " remapping <C-\><C-N> (normal mode in terminal) to <Esc>
 tnoremap <Esc> <C-\><C-N>
 
+inoremap <C-c> <esc>
+
 " git
 nmap <leader>gd :Gdiffsplit <CR>
 

@@ -190,6 +190,7 @@ mkdir -p ${HOME}/.config/nvim/
 
 # moving init.vim to the correct location
 mv init.vim ${HOME}/.config/nvim/
+mv plugin ${HOME}/.config/nvim/
 
 # generating coc-settings.json
 (cat <<EOF

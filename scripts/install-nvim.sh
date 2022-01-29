@@ -11,6 +11,9 @@ set -eu
 
 # TODO install neovim using snap store, and download binary option
 
+# TODO since I switched to telescope, I need to make sure that I have a recent neovim version.
+#      Unfortunately packages in debian repos are terribly out of date.
+
 PKG_MNGR=""
 PKG_MNGR_INSTALL=""
 

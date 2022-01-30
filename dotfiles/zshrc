@@ -66,6 +66,7 @@ alias gis='git status'
 alias gic='git commit'
 alias gd='git diff'
 alias ga='git add'
+alias gp='git push'
 alias gdc='git diff --cached'
 alias gds='git diff --stat'
 

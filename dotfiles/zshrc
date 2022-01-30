@@ -65,6 +65,7 @@ alias l='ls -CF'
 alias gis='git status'
 alias gic='git commit'
 alias gd='git diff'
+alias ga='git add'
 alias gdc='git diff --cached'
 alias gds='git diff --stat'
 

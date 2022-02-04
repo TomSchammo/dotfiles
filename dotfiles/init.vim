@@ -94,3 +94,5 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Better setting for async update (also works for CoC)
 set updatetime=100
+
+set scrolloff=8

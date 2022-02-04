@@ -1,5 +1,6 @@
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set foldlevel=999
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

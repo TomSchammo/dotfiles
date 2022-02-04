@@ -40,6 +40,7 @@ Plug 'mhinz/vim-signify'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 
+" Telescope for fuzzy finding, replaces fzf
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -54,10 +55,24 @@ Plug 'danymat/neogen'
 Plug 'ap/vim-css-color'
 
 " vim-snippets
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 
 " Conquer of Completion for autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Neovim built-in lsp
+Plug 'neovim/nvim-lspconfig'
+
+" Neovim built-in lsp autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+
+Plug 'simrat39/rust-tools.nvim'
 
 " Codi for scratchpad and virtual text
 Plug 'metakirby5/codi.vim'

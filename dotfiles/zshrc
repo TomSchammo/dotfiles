@@ -69,6 +69,8 @@ alias ga='git add'
 alias gp='git push'
 alias gdc='git diff --cached'
 alias gds='git diff --stat'
+alias gc='git checkout'
+alias gcb='git checkout .'
 
 alias upgrade-pip3-packages='pip3 install $(pip3 list | tail +3 | tr -s " " | cut -d " " -f 1) --upgrade'
 

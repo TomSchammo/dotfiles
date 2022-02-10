@@ -22,6 +22,18 @@ require'lspconfig'.pyright.setup{
 }
 
 require('lspconfig')['clangd'].setup {
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--suggest-missing-includes",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+    },
+    -- Required for lsp-status
+    init_options = {
+        clangdFileStatus = true,
+    },
+
     capabilities = capabilities,
     on_attach = on_attach,
 }

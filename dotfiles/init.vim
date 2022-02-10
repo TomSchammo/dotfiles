@@ -21,6 +21,9 @@ call plug#begin('~/.config/nvim/plugins')
 " Gruvbox Color Scheme
 Plug 'morhetz/gruvbox'
 
+" catppuccin color scheme
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+
 " NERDCommenter
 Plug 'preservim/nerdcommenter'
 
@@ -79,11 +82,16 @@ Plug 'simrat39/rust-tools.nvim'
 " Codi for scratchpad and virtual text
 Plug 'metakirby5/codi.vim'
 
+
 " vim-ariline status bar
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 
 " Themes for vim-ariline
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
+
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
 
 " vim signature to manage marks
 Plug 'kshenoy/vim-signature'

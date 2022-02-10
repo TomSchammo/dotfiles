@@ -22,12 +22,25 @@ require('telescope').setup {
             override_file_sorter = true,     -- override the file sorter
             case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
-            }
-        }
+        },
+        project = {
+            base_dirs = {
+                '~/Projects/',
+                '~/Documents/Uni/Programmierprojekt/DNS/',
+            },
+        },
+        file_browser = {
+        },
+    }
 }
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
+
+
+-- Telescop extensions
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('project')
+require('telescope').load_extension('file_browser')
+
+
 
 EOF
 
@@ -43,3 +56,5 @@ command! B execute ":Telescope buffers"
 
 " nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+nnoremap <leader><leader>p <cmd>lua require'telescope'.extensions.project.project{}<cr>
+nnoremap <leader><leader>d <cmd>Telescope file_browser<cr>

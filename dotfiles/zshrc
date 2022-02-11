@@ -71,6 +71,7 @@ alias gdc='git diff --cached'
 alias gds='git diff --stat'
 alias gc='git checkout'
 alias gcb='git checkout .'
+alias gattach='git commit --amend --no-edit'
 
 alias upgrade-pip3-packages='pip3 install $(pip3 list | tail +3 | tr -s " " | cut -d " " -f 1) --upgrade'
 

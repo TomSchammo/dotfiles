@@ -110,3 +110,4 @@ bindkey '^[[1;5C' forward-word
 # Use Ctrl-Space to accept the suggestion
 bindkey '^ ' autosuggest-accept
 
+source ~/.exports

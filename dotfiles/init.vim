@@ -88,6 +88,8 @@ Plug 'Chiel92/vim-autoformat'
 " Codi for scratchpad and virtual text
 Plug 'metakirby5/codi.vim'
 
+" Tabnine
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " vim-ariline status bar
 " Plug 'vim-airline/vim-airline'

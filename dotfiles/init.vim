@@ -79,6 +79,12 @@ Plug 'hrsh7th/cmp-path'
 
 Plug 'simrat39/rust-tools.nvim'
 
+" Autopairs
+Plug 'windwp/nvim-autopairs'
+
+" Autoformatting
+Plug 'Chiel92/vim-autoformat'
+
 " Codi for scratchpad and virtual text
 Plug 'metakirby5/codi.vim'
 

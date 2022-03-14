@@ -2,18 +2,31 @@ lua << EOF
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local on_attach = function()
-     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {buffer=0})
-     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
+local on_attach = function(client)
+    vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {buffer=0})
+    vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
 
-     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
-     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
-     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
-     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
-     vim.keymap.set("n", "ga", vim.lsp.buf.code_action, {buffer=0})
-     vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename, {buffer=0})
-     vim.keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
-     vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
+    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
+    vim.keymap.set("n", "ga", vim.lsp.buf.code_action, {buffer=0})
+    vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename, {buffer=0})
+    vim.keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
+    vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
+
+    -- Set autocommands conditional on server_capabilities
+    -- TODO doesn't work
+    if client.resolved_capabilities.document_highlight then
+        vim.cmd [[
+            augroup lsp_document_highlight
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]]
+    end
+
 end
 
 require'lspconfig'.pyright.setup{
@@ -123,8 +136,9 @@ cmp.setup {
 
     },
     sources = {
-        {name = "vsnip"},
         {name = 'nvim_lsp'},
+        {name = "cmp_tabnine"},
+        {name = "vsnip"},
         {name = "spell", keyword_length = 3},
         {name = "path"},
         {name = 'buffer', keyword_length = 5},
@@ -152,6 +166,6 @@ vim.diagnostic.config({
 -- ]], false)
 EOF
 
-autocmd BufWritePre *.rs,*.py,*.c,*.sh,*.json,*.cpp lua vim.lsp.buf.formatting_sync(nil, 200)
+" autocmd BufWritePre *.rs,*.py,*.c,*.sh,*.json,*.cpp lua vim.lsp.buf.formatting_sync(nil, 200)
 
 set signcolumn=yes

@@ -26,7 +26,6 @@ require('telescope').setup {
         project = {
             base_dirs = {
                 '~/Projects/',
-                '~/Documents/Uni/Programmierprojekt/DNS/',
             },
         },
         file_browser = {

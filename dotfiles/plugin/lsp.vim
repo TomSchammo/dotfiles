@@ -60,6 +60,10 @@ require('rust-tools').setup({
 
     -- https://github.com/simrat39/rust-tools.nvim
     tools = {
+        -- whether to show hover actions inside the hover window
+		-- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
+		-- default: true
+		hover_with_actions = true,
         autoSetHints = true,
         hover_with_actions = true,
         runnables = {
@@ -84,6 +88,26 @@ require('rust-tools').setup({
             highlight = "Comment"
         },
 
+    },
+
+    -- options same as lsp hover / vim.lsp.util.open_floating_preview()
+    hover_actions = {
+        -- the border that is used for the hover window
+        -- see vim.api.nvim_open_win()
+        border = {
+            { "╭", "FloatBorder" },
+            { "─", "FloatBorder" },
+            { "╮", "FloatBorder" },
+            { "│", "FloatBorder" },
+            { "╯", "FloatBorder" },
+            { "─", "FloatBorder" },
+            { "╰", "FloatBorder" },
+            { "│", "FloatBorder" },
+        },
+
+        -- whether the hover action window gets automatically focused
+        -- default: false
+        auto_focus = false,
     },
 
     server = {
@@ -112,6 +136,15 @@ require('rust-tools').setup({
             }
         }
     },
+
+    -- debugging stuff
+	dap = {
+		adapter = {
+			type = "executable",
+			command = "lldb-vscode",
+			name = "rt_lldb",
+		},
+	},
 
 })
 

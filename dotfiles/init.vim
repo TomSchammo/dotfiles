@@ -77,6 +77,16 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 
+" debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-telescope/telescope-dap.nvim'
+
+" python debugging
+Plug 'mfussenegger/nvim-dap-python'
+
+" rust stuff
 Plug 'simrat39/rust-tools.nvim'
 
 " Autopairs

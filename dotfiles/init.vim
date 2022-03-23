@@ -11,6 +11,10 @@ tnoremap <Esc> <C-\><C-N>
 " remapping Ctrl+c to behave exactly like escape in insert mode
 inoremap <C-c> <esc>
 
+" remapping <leader>y to copy to clipboard quickly
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins

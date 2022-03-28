@@ -14,6 +14,7 @@ local on_attach = function(client)
     vim.keymap.set("n", "<leader>rr", vim.lsp.buf.rename, {buffer=0})
     vim.keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
+    vim.keymap.set("n", "<leader>E", "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<cr>", {buffer=0})
 
     -- Set autocommands conditional on server_capabilities
     -- TODO doesn't work

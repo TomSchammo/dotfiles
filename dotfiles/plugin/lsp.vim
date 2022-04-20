@@ -57,6 +57,8 @@ require('lspconfig')['bashls'].setup {
     on_attach = on_attach,
 }
 
+require'lspconfig'.ltex.setup{}
+
 require('rust-tools').setup({
 
     -- https://github.com/simrat39/rust-tools.nvim

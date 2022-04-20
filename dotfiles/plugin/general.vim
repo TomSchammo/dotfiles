@@ -25,13 +25,13 @@ set relativenumber
 " no wrap to next line
 set nowrap
 
-" turn search highliting off
+" turn search highlighting off
 set nohlsearch
 
 " disables --INSERT--
 set noshowmode
 
-" Highlight trailing whitespace
+" Highlight trailing white space
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/

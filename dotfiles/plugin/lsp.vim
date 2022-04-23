@@ -57,7 +57,10 @@ require('lspconfig')['bashls'].setup {
     on_attach = on_attach,
 }
 
-require'lspconfig'.ltex.setup{}
+require'lspconfig'.ltex.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
 require('rust-tools').setup({
 

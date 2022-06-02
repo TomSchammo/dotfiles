@@ -50,6 +50,7 @@ EOF
 
 nnoremap <C-p>  <cmd>Telescope find_files<cr>
 nnoremap <C-i>  <cmd>Telescope live_grep<cr>
+nnoremap <C-s>  <cmd>Telescope lsp_document_symbols<cr>
 " nnoremap <leader>b  <cmd>Telescope buffers<cr>
 command! B execute ":Telescope buffers"
 

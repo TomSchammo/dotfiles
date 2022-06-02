@@ -77,6 +77,8 @@ alias upgrade-pip3-packages='pip3 install $(pip3 list | tail +3 | tr -s " " | cu
 
 alias python='python3'
 
+alias tn='tmux new-session -s "$(pwd | rev | cut -d/ -f1 | rev)"'
+
 
 # Exports
 export PATH="$HOME/.scripts:/usr/local/bin:$PATH"

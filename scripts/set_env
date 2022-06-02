@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z ${1} ]; then
+    echo "You need to provide a name"
+else
+    export "${1}"="$(pwd)"
+    echo "${1}=\"$(pwd)\"" >> ~/.exports
+fi
+
+

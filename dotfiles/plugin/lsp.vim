@@ -18,7 +18,7 @@ local on_attach = function(client)
 
     -- Set autocommands conditional on server_capabilities
     -- TODO doesn't work
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         vim.cmd [[
             augroup lsp_document_highlight
             autocmd! * <buffer>

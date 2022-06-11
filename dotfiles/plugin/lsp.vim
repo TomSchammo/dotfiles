@@ -170,7 +170,8 @@ cmp.setup {
         ['<C-k>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-j>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c'}),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c'}),
+        -- ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c'}),
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i' }),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
     },

@@ -20,4 +20,4 @@ if [[ counter -ne 0 ]]; then
     dir="${dir}${counter}"
 fi
 
-tmux new-session -s  ${dir}
+tmux new-session -s "${dir}"

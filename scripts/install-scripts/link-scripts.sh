@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This scrip links the scripts from the repository into ~/.local/bin/ which
 # should be part of $PATH.
 # Symbolic links are created instead of moving or copying the files since it

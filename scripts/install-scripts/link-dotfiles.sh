@@ -21,28 +21,27 @@ ln -s ${dotfiles}/zshrc ~/.zshrc &&
 echo "success!" || echo "error when linking zshrc..."
 
 echo "Linking tmux config..."
-ln -s ${dotfiles}/tmux.conf ${XDG_CONFIG_HOME}/tmux/ &&
+ln -s ${dotfiles}/tmux/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking tmux config..."
 
 echo "Linking alacritty config..."
-ln -s ${dotfiles}/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/ &&
+ln -s ${dotfiles}/alacritty/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking alacritty config..."
 
 echo "Linking neovim config..."
-ln -s ${dotfiles}/init.vim ${XDG_CONFIG_HOME}/nvim/ &&
-ln -s ${dotfiles}/plugin/ ${XDG_CONFIG_HOME}/nvim/ &&
+ln -s ${dotfiles}/nvim/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking neovim config..."
 
 echo "Linking zathurarc..."
-ln -s ${dotfiles}/zathurarc ${XDG_CONFIG_HOME}/zathura/ &&
+ln -s ${dotfiles}/zathura/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking zathurarc..."
 
 echo "Linking mpd config..."
-ln -s ${dotfiles}/mpd.conf ${XDG_CONFIG_HOME}/mpd/ &&
+ln -s ${dotfiles}/mpd/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking mpd config..."
 
 echo "Linking ncmpcpp config..."
-ln -s ${dotfiles}/ncmpcpp_config ${XDG_CONFIG_HOME}/ncmpcpp/config &&
+ln -s ${dotfiles}/ncmpcpp/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking ncmpcpp config..."
 
 # returning back to the original directory

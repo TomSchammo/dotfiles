@@ -1,8 +1,8 @@
+#!/bin/bash
+
 # This scrip links the dotfiles from the repository into their respective place.
 # Symbolic links are created instead of moving or copying the files since it
 # seems kind of silly to have duplicates around when version control exists.
-
-# Creating necessary directories
 
 current_dir=${PWD}
 
@@ -13,6 +13,7 @@ git_base=${PWD}
 
 dotfiles=${git_base}/dotfiles/
 
+# Creating necessary directories
 mkdir -p ${XDG_CONFIG_HOME}/{tmux,alacritty,nvim,zsh,zathura,mpd,ncmpcpp}
 
 echo "Linking zshrc..."

@@ -44,5 +44,9 @@ echo "Linking ncmpcpp config..."
 ln -s ${dotfiles}/ncmpcpp/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking ncmpcpp config..."
 
+echo "Linking rofi config..."
+ln -s ${dotfiles}/rofi/ ${XDG_CONFIG_HOME} &&
+echo "success!" || echo "error when linking rofi config..."
+
 # returning back to the original directory
 cd ${current_dir}

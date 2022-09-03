@@ -10,13 +10,9 @@ export CFLAGS="-ggdb3 -O0 -std=c11 -Wall -Werror"
 export BROWSER=brave
 export EDITOR=nvim
 export VISUAL=nvim
+# export TERM=linux
 export TERM=alacritty
 export TERMINAL=alacritty
-
-# Comment the generic variables above and uncomment
-# this if there are issues whith weird behavior
-# export TERM=xterm
-
 
 DISABLE_AUTO_TITLE="true"
 PROMPT='%B%F{blue}%~%f%F{cyan}%f%b '

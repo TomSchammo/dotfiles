@@ -39,5 +39,5 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " enable integrated spellchecker
-set spell
+" set spell
 

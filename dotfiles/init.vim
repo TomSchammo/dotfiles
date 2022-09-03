@@ -31,7 +31,9 @@ Plug 'morhetz/gruvbox'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 " NERDCommenter
-Plug 'preservim/nerdcommenter'
+" Plug 'preservim/nerdcommenter'
+
+Plug 'numToStr/Comment.nvim'
 
 " vim-surround
 Plug 'tpope/vim-surround'

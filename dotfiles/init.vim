@@ -21,6 +21,8 @@ vnoremap <leader>y "+y
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugins')
 
+" Automatically take care of sessions (and work with tmux-resurrect)
+Plug 'tpope/vim-obsession'
 
 " Gruvbox Color Scheme
 Plug 'morhetz/gruvbox'
@@ -128,3 +130,11 @@ call plug#end()
 set updatetime=100
 
 set scrolloff=8
+
+"Turn off auto reload for vim-session plugin
+let g:session_autosave_periodic = 1
+let g:session_autoload = 'yes'
+let g:session_autosave = 'yes'
+let g:session_autosave_to = 'default'
+let g:session_verbose_messages = 0
+let g:session_default_to_last = 1

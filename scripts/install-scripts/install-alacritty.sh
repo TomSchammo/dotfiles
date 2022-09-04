@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
+
+# NOTE: this script is outdated and specific to debian based distributions!
+#       It should no longer be used!
+
 set -eu
 
 cd ${HOME}

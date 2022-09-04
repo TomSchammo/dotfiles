@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
+
+# NOTE: this script is outdated!
+#       It installs things that I've not been using for months and is no longer recommended!
+
+
 set -eu
+
 
 #######################################################################
 # Script to automatically install neovim, with my dotfiles.           #
@@ -30,7 +36,7 @@ detect_pkg_manager() {
         echo -e "No package manager could be detected on the system\nExiting script..."
         exit 1
     fi
-        
+
 }
 
 detect_pkg_manager
@@ -50,7 +56,7 @@ do
             echo "##### Installing neovim using ${PKG_MNGR} #####"
             sudo ${PKG_MNGR_INSTALL} neovim
             ;;
-        2) 
+        2)
             echo "##### Building from source #####"
 
             echo "Installing dependencies..."
@@ -62,7 +68,7 @@ do
             fi
 
             sudo ${PKG_MNGR_INSTALL} git
-            
+
             cd ~
 
             echo "Cloning Repository into ${pwd}"
@@ -85,13 +91,13 @@ do
             echo "Sourcefiles have been removed."
 
             echo "##### Neovim has sucessfully been compiled ####"
-            
+
             ;;
         3)
             echo "Downloading Binary" ;;
         4)
             echo "Installing neovim using the snap store" ;;
-        5) 
+        5)
             echo "Quitting..."
             exit 0
             ;;

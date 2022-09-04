@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# NOTE: this script is outdated! It also only supports pacman and apt for package mangers.
+#       This script should not be used!
 
 PKG_MNGR=""
 PKG_MNGR_INSTALL=""

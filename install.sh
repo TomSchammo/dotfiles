@@ -39,7 +39,7 @@ packages="zsh rofi nvim \
     alacritty ncmpcpp mpd \
     zathura tmux"
 
-# TODO install programs
+sudo ${PKG_MNGR_INSTALL} ${packages}
 
 echo "Making scripts executable (might prompt you for your root password)..."
 

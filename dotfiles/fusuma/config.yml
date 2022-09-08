@@ -1,0 +1,15 @@
+swipe:
+  4:
+    left:
+      command: "xdotool key alt+Left"
+    right:
+      command: "xdotool key alt+Right"
+  3:
+    left:
+      command: "xdotool key ctrl+alt+Left"
+    right:
+      command: "xdotool key ctrl+alt+Right"
+    up:
+      command: "xfdashboard --toggle"
+    down:
+      command: "xfdashboard --toggle"

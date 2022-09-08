@@ -48,5 +48,9 @@ echo "Linking rofi config..."
 ln -s ${dotfiles}/rofi/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking rofi config..."
 
+echo "Linking fusuma config..."
+ln -s ${dotfiles}/fusuma/ ${XDG_CONFIG_HOME} &&
+echo "success!" || echo "error when linking fusuma config..."
+
 # returning back to the original directory
 cd ${current_dir}

@@ -50,3 +50,7 @@ echo "Creating symlinks..."
 
 ./scripts/install-scripts/link-scripts.sh
 ./scripts/install-scripts/link-dotfiles.sh
+
+echo "Installing rust..."
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

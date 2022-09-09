@@ -20,6 +20,10 @@ echo "Linking zshrc..."
 ln -s ${dotfiles}/zshrc ~/.zshrc &&
 echo "success!" || echo "error when linking zshrc..."
 
+echo "Linking zsh plugins..."
+ln -s ${dotfiles}/zsh/ ${XDG_CONFIG_HOME} &&
+echo "success!" || echo "error when linking zsh plugins..."
+
 echo "Linking tmux config..."
 ln -s ${dotfiles}/tmux/ ${XDG_CONFIG_HOME} &&
 echo "success!" || echo "error when linking tmux config..."

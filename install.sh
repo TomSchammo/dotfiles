@@ -38,7 +38,8 @@ echo "This script needs root privileges to install packages..."
 packages="zsh rofi nvim \
     alacritty ncmpcpp mpd \
     zathura tmux fusuma \
-    htop ncdu ripgrep"
+    htop ncdu ripgrep fd \
+    gcc gcc-c++ make cmake"
 
 sudo ${PKG_MNGR_INSTALL} ${packages}
 

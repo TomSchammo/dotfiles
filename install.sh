@@ -52,6 +52,11 @@ echo "Making scripts executable (might prompt you for your root password)..."
 
 sudo chmod +x scripts/install-scripts/link-scripts.sh
 sudo chmod +x scripts/install-scripts/link-dotfiles.sh
+sudo chmod +x scripts/install-scripts/clean.sh
+
+echo "Preparing to create symlinks..."
+
+./scripts/install-scripts/clean.sh
 
 echo "Creating symlinks..."
 

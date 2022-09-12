@@ -4,23 +4,28 @@
 
 PKG_MNGR=""
 PKG_MNGR_INSTALL=""
+PKG_MNGR_UPDATE_SYSTEM=""
 
 detect_pkg_manager() {
     if [ -x "$(command -v apt)" ]; then
         PKG_MNGR="apt"
         PKG_MNGR_INSTALL="apt install -y"
+        PKG_MNGR_UPDATE_SYSTEM="apt update && apt upgrade -y"
 
     elif [ -x "$(command -v pacman )" ]; then
         PKG_MNGR="pacman"
         PKG_MNGR_INSTALL="pacman -S --noconfirm"
+        PKG_MNGR_UPDATE_SYSTEM="pacman -Syu --noconfirm"
 
     elif [ -x "$(command -v dnf )" ]; then
         PKG_MNGR="dnf"
         PKG_MNGR_INSTALL="dnf install -y"
+        PKG_MNGR_UPDATE_SYSTEM="dnf upgrade -y"
 
     elif [ -x "$(command -v zypper )" ]; then
         PKG_MNGR="zypper"
         PKG_MNGR_INSTALL="zypper -n install"
+        PKG_MNGR_UPDATE_SYSTEM="zypper -n dup"
 
     else
         echo -e "No package manager could be detected on the system\nExiting script..."

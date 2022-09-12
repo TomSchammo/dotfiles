@@ -6,26 +6,32 @@ PKG_MNGR=""
 PKG_MNGR_INSTALL=""
 PKG_MNGR_UPDATE_SYSTEM=""
 
+PACKAGE_LIBINPUT="libinput-devel"
+
 detect_pkg_manager() {
     if [ -x "$(command -v apt)" ]; then
         PKG_MNGR="apt"
         PKG_MNGR_INSTALL="apt install -y"
         PKG_MNGR_UPDATE_SYSTEM="apt update && apt upgrade -y"
+        PACKAGE_LIBINPUT="libinput-tools"
 
     elif [ -x "$(command -v pacman )" ]; then
         PKG_MNGR="pacman"
         PKG_MNGR_INSTALL="pacman -S --noconfirm"
         PKG_MNGR_UPDATE_SYSTEM="pacman -Syu --noconfirm"
+        PACKAGE_LIBINPUT="libinput"
 
     elif [ -x "$(command -v dnf )" ]; then
         PKG_MNGR="dnf"
         PKG_MNGR_INSTALL="dnf install -y"
         PKG_MNGR_UPDATE_SYSTEM="dnf upgrade -y"
+        PACKAGE_LIBINPUT="libinput"
 
     elif [ -x "$(command -v zypper )" ]; then
         PKG_MNGR="zypper"
         PKG_MNGR_INSTALL="zypper -n install"
         PKG_MNGR_UPDATE_SYSTEM="zypper -n dup"
+        PACKAGE_LIBINPUT="libinput-tools"
 
     else
         echo -e "No package manager could be detected on the system\nExiting script..."
@@ -42,11 +48,22 @@ echo "This script needs root privileges to install packages..."
 
 packages="zsh rofi nvim \
     alacritty ncmpcpp mpd \
-    zathura tmux fusuma \
-    htop ncdu ripgrep fd \
-    gcc gcc-c++ make cmake"
+    zathura tmux htop \
+    ncdu ripgrep fd \
+    gcc gcc-c++ make cmake \
+    ruby xdotool ${PACKAGE_LIBINPUT}"
+
 
 sudo ${PKG_MNGR_INSTALL} ${packages}
+
+echo "installing fusuma using gem..."
+
+sudo gem install fusuma
+
+echo "setting up permissions for fusuma..."
+
+sudo gpasswd -a ${USER} input
+newgrp input
 
 echo "Making scripts executable (might prompt you for your root password)..."
 

@@ -46,7 +46,7 @@ echo "Using ${PKG_MNGR} to install packages..."
 
 echo "This script needs root privileges to install packages..."
 
-packages="zsh rofi nvim \
+packages="zsh rofi neovim \
     alacritty ncmpcpp mpd \
     zathura tmux htop \
     ncdu ripgrep fd \

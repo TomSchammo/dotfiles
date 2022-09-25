@@ -17,7 +17,7 @@ dotfiles=${git_base}/dotfiles
 mkdir -p ${XDG_CONFIG_HOME}/{tmux,alacritty,nvim,zsh,zathura,mpd,ncmpcpp}
 
 echo "Linking zshrc..."
-ln -s ${dotfiles}/zshrc ~/.zshrc &&
+ln -s ${dotfiles}/zshrc ${HOME}/.zshrc &&
 echo "success!" || echo "error when linking zshrc..."
 
 echo "Linking zsh plugins..."

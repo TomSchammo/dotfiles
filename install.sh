@@ -60,11 +60,6 @@ echo "installing fusuma using gem..."
 
 sudo gem install fusuma
 
-echo "setting up permissions for fusuma..."
-
-sudo gpasswd -a ${USER} input
-newgrp input
-
 echo "Making scripts executable (might prompt you for your root password)..."
 
 sudo chmod +x scripts/install-scripts/link-scripts.sh
@@ -79,6 +74,17 @@ echo "Creating symlinks..."
 
 ./scripts/install-scripts/link-scripts.sh
 ./scripts/install-scripts/link-dotfiles.sh
+
+echo "Setting up user '${USER}'..."
+
+echo "Setting default shell to zsh"
+
+sudo usermod ${USER} -s /bin/zsh
+
+echo "setting up permissions for fusuma..."
+
+sudo gpasswd -a ${USER} input
+newgrp input
 
 echo "Installing rust..."
 

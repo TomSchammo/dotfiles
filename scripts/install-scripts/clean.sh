@@ -6,13 +6,13 @@
 #       THEY WILL BE STORED IN `~/.tmp/backup` FOR RECOVERY.
 #       THEY WILL NOT BE DELETED.
 
-BACKUP_LOCATION="~/.tmp/backup"
+BACKUP_LOCATION="${HOME}/.tmp/backup"
 
 mkdir -p ${BACKUP_LOCATION}
 
 echo "Moving files in ${HOME}"
 
-mv -v ~/.zshrc ${BACKUP_LOCATION}
+mv -v ${HOME}/zshrc ${BACKUP_LOCATION}
 
 echo "Moving files in ${XDG_CONFIG_HOME}"
 

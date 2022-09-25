@@ -28,4 +28,4 @@ do
 done
 
 # returning back to the original directory
-cd {current_dir}
+cd ${current_dir}

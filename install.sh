@@ -40,6 +40,16 @@ detect_pkg_manager() {
 
 }
 
+echo "Setting up system..."
+
+
+if [[ -z "${XDG_CONFIG_HOME}" ]]; then
+    echo "XDG_CONFIG_HOME is not set, setting it to ${HOME}/.config"
+    export XDG_CONFIG_HOME="${HOME}/.config"
+else
+    echo "XDG_CONFIG_HOME is set to ${XDG_CONFIG_HOME}"
+fi
+
 detect_pkg_manager
 
 echo "Using ${PKG_MNGR} to install packages..."

@@ -15,6 +15,13 @@ inoremap <C-c> <esc>
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 
+" remapping <leader>jp to prettify json
+nnoremap  <leader>jp :%!jq<cr>
+vnoremap  <leader>jp :%!jq<cr>
+
+" remapping <leader>jc to compact json
+nnoremap  <leader>jc :%!jq -c<cr>
+vnoremap  <leader>jc :%!jq -c<cr>
 
 " Install Vim Plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'

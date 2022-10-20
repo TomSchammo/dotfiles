@@ -59,7 +59,7 @@ echo "This script needs root privileges to install packages..."
 packages="zsh rofi neovim \
     alacritty ncmpcpp mpd \
     zathura tmux htop \
-    ncdu ripgrep fd \
+    ncdu ripgrep fd jq \
     gcc gcc-c++ make cmake \
     ruby xdotool ${PACKAGE_LIBINPUT}"
 

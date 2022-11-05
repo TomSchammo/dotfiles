@@ -61,7 +61,8 @@ packages="zsh rofi neovim \
     zathura tmux htop \
     ncdu ripgrep fd jq \
     gcc gcc-c++ make cmake \
-    ruby xdotool ${PACKAGE_LIBINPUT}"
+    ruby xdotool ${PACKAGE_LIBINPUT} \
+    fzf"
 
 
 sudo ${PKG_MNGR_INSTALL} ${packages}

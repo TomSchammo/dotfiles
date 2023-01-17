@@ -107,7 +107,6 @@ require('rust-tools').setup({
 		-- default: true
 		hover_with_actions = true,
         autoSetHints = true,
-        hover_with_actions = true,
         runnables = {
             use_telescope = true
         },

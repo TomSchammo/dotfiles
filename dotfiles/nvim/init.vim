@@ -35,11 +35,21 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugins')
 
+" Testing spellchecker
+" NOTE: this makes neovim lag when typing. Uninstalling it made the experience
+" much smoother again. If I had to guess I'd say it's the suggestions that
+" cause the drop in performance. Either because I also have TabNine running,
+" and the combination makes performance suffer, or because the suggestions of
+" the plugin itself are causing problems.
+" Might either drop or have to investigate.
+" Plug 'f3fora/cmp-spell'
+
 " Automatically take care of sessions (and work with tmux-resurrect)
 Plug 'tpope/vim-obsession'
 
 " Gruvbox Color Scheme
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'ellisonleao/gruvbox.nvim'
 
 " catppuccin color scheme
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
@@ -135,6 +145,10 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " vim signature to manage marks
 Plug 'kshenoy/vim-signature'
+
+" bufferline
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
 call plug#end()
 

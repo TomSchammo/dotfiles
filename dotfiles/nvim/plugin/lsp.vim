@@ -57,10 +57,46 @@ require('lspconfig')['bashls'].setup {
     on_attach = on_attach,
 }
 
-require'lspconfig'.ltex.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+
+-- NOTE: this is very slow and causes nvim to lag
+-- require('cmp').setup({
+--     sources = {
+--         {
+--             name = 'spell',
+--             option = {
+--                 keep_all_entries = false,
+--                 enable_in_context = function()
+--                     return require('cmp.config.context').in_treesitter_capture('spell')
+--                     -- return true
+--                 end,
+--             },
+--         },
+--     },
+-- })
+
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us', 'de' }
+
+-- require'lspconfig'.ltex.setup{
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         ltex =  {
+--             -- language = "en"
+--             language = "de-DE",
+--     --         dictionary = {
+--     --             ["en-US"] = words,
+--     --             ["en-UK"] = words,
+--     --             ["en"] = words,
+--     --         }
+--             configurationTarget = {
+--                 dictionary = "user",
+--                 disabledRules = "user",
+--                 hiddenFalsePositives = "user",
+--             }
+--         }
+--     }
+-- }
 
 require('rust-tools').setup({
 

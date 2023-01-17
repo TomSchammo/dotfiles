@@ -1,2 +1,5 @@
 # Ignore vim swapfiles
 *.sw[a-z]
+
+# Ignore installed plugins (happens when linking repo)
+dotfiles/nvim/plugins

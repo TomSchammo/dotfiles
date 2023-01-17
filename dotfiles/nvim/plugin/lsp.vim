@@ -6,7 +6,11 @@ local on_attach = function(client)
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {buffer=0})
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
+    if vim.bo.filetype == rust then
+        vim.keymap.set("n", "K", "<cmd>RustHoverActions<cr>", {buffer=0})
+    else
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
+    end
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
@@ -105,7 +109,6 @@ require('rust-tools').setup({
         -- whether to show hover actions inside the hover window
 		-- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
 		-- default: true
-		hover_with_actions = true,
         autoSetHints = true,
         runnables = {
             use_telescope = true

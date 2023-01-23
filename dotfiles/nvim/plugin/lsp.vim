@@ -390,8 +390,6 @@ vim.diagnostic.config({
 -- vim.api.nvim_exec([[
 -- autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
 -- ]], false)
+
+vim.cmd[[set signcolumn=yes]]
 EOF
-
-" autocmd BufWritePre *.rs,*.py,*.c,*.sh,*.json,*.cpp lua vim.lsp.buf.formatting_sync(nil, 200)
-
-set signcolumn=yes

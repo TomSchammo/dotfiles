@@ -12,7 +12,7 @@ mkdir -p ${BACKUP_LOCATION}
 
 echo "Moving files in ${HOME}"
 
-mv -v ${HOME}/zshrc ${BACKUP_LOCATION}
+mv -v ${HOME}/.zshrc ${BACKUP_LOCATION}
 
 echo "Moving files in ${XDG_CONFIG_HOME}"
 

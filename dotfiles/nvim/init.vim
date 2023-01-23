@@ -59,6 +59,10 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 Plug 'numToStr/Comment.nvim'
 
+" Mason
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
 " vim-surround
 Plug 'tpope/vim-surround'
 

@@ -26,8 +26,9 @@ require('neogen').setup {
 }
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<C-l>", ":lua require('neogen').jump_next()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-h>", ":lua require('neogen').jump_prev()<CR>", opts)
+vim.keymap.set("n", "<C-l>", require('neogen').jump_next, opts)
+vim.keymap.set("n", "<C-h>", require('neogen').jump_prev, opts)
+
+vim.keymap.set("n", "<leader>do", require("neogen").generate, { noremap = true })
 EOF
 
-nnoremap <leader>do :Neogen<CR>

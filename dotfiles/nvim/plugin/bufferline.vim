@@ -1,5 +1,5 @@
 lua << EOF
 require("bufferline").setup{}
-EOF
 
-nnoremap <C-w> :bdelete<cr>
+vim.keymap.set("n", "<C-w>", ":bdelete<cr>", {noremap=true})
+EOF

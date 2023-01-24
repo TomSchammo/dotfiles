@@ -1,7 +1,3 @@
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set foldlevel=999
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -31,4 +27,8 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
+
+vim.cmd[[ set foldmethod=expr ]]
+vim.cmd[[ set foldexpr=nvim_treesitter#foldexpr() ]]
+vim.cmd[[ set foldlevel=999 ]]
 EOF

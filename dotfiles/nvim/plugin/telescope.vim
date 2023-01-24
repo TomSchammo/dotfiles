@@ -40,21 +40,17 @@ require('telescope').load_extension('project')
 require('telescope').load_extension('file_browser')
 
 
+local builtin = require('telescope.builtin')
+
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<C-i>', builtin.live_grep, {})
+vim.keymap.set('n', '<C-s>', builtin.lsp_document_symbols, {})
+
+vim.cmd[[ command! B execute ":Telescope buffers" ]]
+
+vim.keymap.set('n', '<leader><leader>p', require('telescope').extensions.project.project, {})
+vim.keymap.set('n', '<leader><leader>d', require('telescope').extensions.file_browser.file_browser, {})
 
 EOF
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Telescope
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nnoremap <C-p>  <cmd>Telescope find_files<cr>
-nnoremap <C-i>  <cmd>Telescope live_grep<cr>
-nnoremap <C-s>  <cmd>Telescope lsp_document_symbols<cr>
-" nnoremap <leader>b  <cmd>Telescope buffers<cr>
-command! B execute ":Telescope buffers"
-
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-nnoremap <leader><leader>p <cmd>lua require'telescope'.extensions.project.project{}<cr>
-nnoremap <leader><leader>d <cmd>Telescope file_browser<cr>

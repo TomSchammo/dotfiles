@@ -5,7 +5,7 @@
 -- TODO this is broken, the ps command does not work that way apparently
 --      I can not explain why it appeared to work with markdown, but it does
 --      not appear to work with latex
-vim.cmd[[
+vim.cmd([[
     function Recompile_Document(filename, type)
         let l:out = systemlist("ps -eo command | grep -E 'zathura " . fnamemodify(a:filename, ":r") . ".pdf'")[0]
 
@@ -38,30 +38,38 @@ vim.cmd[[
         endif
 
     endfunction
-]]
+]])
 
 ---------------------------------------------------------------
 -- Vim for Markdown
 ---------------------------------------------------------------
 
 -- compile markdown to pdf and open it in zathura
-vim.cmd[[ autocmd BufWritePost *.md silent call Recompile_Document(@%, "md") ]]
-vim.cmd[[ autocmd FileType markdown nnoremap <leader><F1> :!pandoc --from markdown+footnotes --filter pandoc-fignos --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR> ]]
+vim.cmd([[ autocmd BufWritePost *.md silent call Recompile_Document(@%, "md") ]])
+vim.cmd(
+	[[ autocmd FileType markdown nnoremap <leader><F1> :!pandoc --from markdown+footnotes --filter pandoc-fignos --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR> ]]
+)
 -- TODO
 -- autocmd FileType markdown nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pandoc % -s -o "%:r".pdf && zathura "%:p:r".pdf&<CR>
 -- -V fontenc=T2A
 
-
 ---------------------------------------------------------------
 -- Vim for LaTeX
 ---------------------------------------------------------------
+
+-- set file type of any file with 'tex' extension to tex (instead of plaintex)
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = "*.tex",
+	callback = function()
+		vim.bo.filetype = "tex"
+	end,
+})
 
 -- compile tex file to pdf and open it in zathura
 -- TODO this is broken
 -- autocmd BufWritePost *.tex silent call Recompile_Document(@%, "tex")
 
 -- autocmd FileType tex nnoremap <leader><F1> :!pdflatex % && zathura "%:p:r".pdf&<CR>
-vim.cmd[[ autocmd FileType tex nnoremap <leader><F1> :!latexmk % -pdf && zathura "%:p:r".pdf&<CR> ]]
+vim.cmd([[ autocmd FileType tex nnoremap <leader><F1> :!latexmk % -pdf && zathura "%:p:r".pdf&<CR> ]])
 -- TODO
 -- autocmd FileType tex nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pdflatex % && zathura "%:p:r".pdf<CR>
-

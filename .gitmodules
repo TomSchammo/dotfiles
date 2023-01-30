@@ -10,3 +10,6 @@
 [submodule "dotfiles/tmux/plugins/tpm"]
 	path = dotfiles/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "dotfiles/zsh/plugins/web-search"]
+	path = dotfiles/zsh/plugins/web-search
+	url = https://github.com/TomSchammo/web-search

@@ -1,7 +1,6 @@
-lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = {'rust', 'python', 'c', 'cpp', 'bash', 'json', 'make', 'markdown'},
+  ensure_installed = {'rust', 'python', 'c', 'cpp', 'bash', 'json', 'make', 'markdown', 'vim'},
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -31,4 +30,3 @@ require'nvim-treesitter.configs'.setup {
 vim.cmd[[ set foldmethod=expr ]]
 vim.cmd[[ set foldexpr=nvim_treesitter#foldexpr() ]]
 vim.cmd[[ set foldlevel=999 ]]
-EOF

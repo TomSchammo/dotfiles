@@ -1,8 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Status Line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-lua << END
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -32,4 +27,3 @@ require('lualine').setup {
   tabline = {},
   extensions = {}
 }
-END

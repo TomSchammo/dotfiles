@@ -1,4 +1,3 @@
-lua << EOF
 require('neogen').setup {
     enabled = true,
     languages = {
@@ -30,5 +29,3 @@ vim.keymap.set("n", "<C-l>", require('neogen').jump_next, opts)
 vim.keymap.set("n", "<C-h>", require('neogen').jump_prev, opts)
 
 vim.keymap.set("n", "<leader>do", require("neogen").generate, { noremap = true })
-EOF
-

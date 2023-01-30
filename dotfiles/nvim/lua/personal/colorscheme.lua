@@ -1,10 +1,3 @@
-" set colorscheme
-" colorscheme gruvbox
-" colorscheme catppuccin
-" set background=dark
-
-
-lua << EOF
 -- local catppuccin = require("catppuccin")
 
 -- configure it
@@ -52,4 +45,3 @@ require'nvim-web-devicons'.setup {
  default = true;
 }
 
-EOF

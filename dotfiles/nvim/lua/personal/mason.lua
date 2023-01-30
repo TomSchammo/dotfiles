@@ -1,5 +1,3 @@
-
-lua << EOF
 require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_instsalled = {
@@ -15,4 +13,3 @@ require("mason-lspconfig").setup {
         "taplo",
     },
 }
-EOF

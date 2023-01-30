@@ -1,8 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lua stuff
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-lua << EOF
 -- You don't need to set any of these options. These are the default ones. Only
 -- the loading is important
 require('telescope').setup {
@@ -50,7 +45,4 @@ vim.cmd[[ command! B execute ":Telescope buffers" ]]
 
 vim.keymap.set('n', '<leader><leader>p', require('telescope').extensions.project.project, {})
 vim.keymap.set('n', '<leader><leader>d', require('telescope').extensions.file_browser.file_browser, {})
-
-EOF
-
 

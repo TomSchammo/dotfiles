@@ -1,5 +1,3 @@
-lua << EOF
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client)
@@ -182,6 +180,7 @@ require("mason-lspconfig").setup_handlers {
         end,
 }
 
+
 -- require'lspconfig'.pyright.setup{
 --     on_attach = on_attach,
 --     capabilities = capabilities,
@@ -345,11 +344,14 @@ require('rust-tools').setup({
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
 
 local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+
 
 cmp.setup {
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
     mapping = {
@@ -364,10 +366,13 @@ cmp.setup {
     sources = {
         {name = 'nvim_lsp'},
         {name = "cmp_tabnine"},
-        {name = "vsnip"},
+        {name = "luasnip"},
         {name = "spell", keyword_length = 3},
         {name = "path"},
         {name = 'buffer', keyword_length = 5},
+        { name = 'nvim_lua' },
+
+
     },
 }
 
@@ -391,5 +396,3 @@ vim.diagnostic.config({
 -- autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
 -- ]], false)
 
-vim.cmd[[set signcolumn=yes]]
-EOF

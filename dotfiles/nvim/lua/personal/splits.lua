@@ -1,5 +1,3 @@
-lua << EOF
-
 ---------------------------------------------------------------
 -- Splits and Tabbed Files
 ---------------------------------------------------------------
@@ -21,4 +19,3 @@ vim.keymap.set('n', '<C-Down>', ':resize -3<CR>', {noremap=true, silent=true})
 -- Change 2 split windows from vert to horiz or horiz to vert
 vim.keymap.set('', '<leader>h', '<C-w>t<C-w>H')
 vim.keymap.set('', '<leader>v', '<C-w>t<C-w>K')
-EOF

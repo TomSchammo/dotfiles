@@ -3,3 +3,9 @@
 
 # Ignore installed plugins (happens when linking repo)
 dotfiles/nvim/plugins
+
+# Ignore Session.vim for session management
+**/*/Session.vim
+
+# Ignore lazy lockfile (happens when linking the repo)
+dotfiles/nvim/lazy-lock.json

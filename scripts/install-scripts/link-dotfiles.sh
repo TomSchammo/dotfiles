@@ -61,5 +61,9 @@ echo "Linking fusuma config..."
 ln -s "${dotfiles}"/fusuma/ "${XDG_CONFIG_HOME}" &&
     echo "${SUCCESS}success!${NC}" || echo "${ERROR}error when linking fusuma config...${NC}"
 
+echo "Linking restic ignore file..."
+ln -s "${dotfiles}"/restic_excludes "${HOME}/.restic_excludes" &&
+    echo "${SUCCESS}success!${NC}" || echo "${ERROR}error when linking restic ignore file...${NC}"
+
 # returning back to the original directory
 cd "${current_dir}"

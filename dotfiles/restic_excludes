@@ -1,0 +1,14 @@
+# Excluding VBox stuff
+${HOME}/VirtualBox*
+
+# Excluding ISOs
+${HOME}/**/*.iso
+
+# Excluding logfiles
+${HOME}/**/*.log*
+
+# Excluding caches
+${HOME}/.cache
+
+# Excluding baloo indexes
+${HOME}/.local/share/baloo

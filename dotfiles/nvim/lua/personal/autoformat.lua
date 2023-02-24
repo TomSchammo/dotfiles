@@ -49,10 +49,30 @@ require("formatter").setup({
 
         c = {
             require("formatter.filetypes.c").clangformat,
+
+            function()
+                return {
+                    exe = "clang-format",
+                    args = {
+                        "--style=llvm",
+                        "--sort-includes",
+                    },
+                }
+            end,
         },
 
         cpp = {
             require("formatter.filetypes.cpp").clangformat,
+
+            function()
+                return {
+                    exe = "clang-format",
+                    args = {
+                        "--style=llvm",
+                        "--sort-includes",
+                    },
+                }
+            end,
         },
 
         python = {

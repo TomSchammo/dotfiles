@@ -7,7 +7,7 @@
 -- or in the main package
 -- If there is no main file, the current file is executed
 
-vim.cmd[[
+vim.cmd([[
     function! Exec_py(filename)
         if filereadable("main.py")
             execute "sp | resize 20 | term python3 main.py"
@@ -22,4 +22,4 @@ vim.cmd[[
     endfunction
 
     autocmd FileType python nnoremap <leader><F1> :call Exec_py(@%) <CR>
-]]
+]])

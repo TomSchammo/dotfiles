@@ -3,7 +3,7 @@
 ---------------------------------------------------------------
 
 -- disable sounds
-vim.cmd[[ set noerrorbells ]]
+vim.cmd([[ set noerrorbells ]])
 
 -- setting tab size and so on
 vim.opt.tabstop = 4
@@ -28,7 +28,7 @@ vim.opt.hlsearch = false
 -- vim.opt.incsearch = true
 
 -- disables --INSERT--
-vim.cmd[[ set noshowmode ]]
+vim.cmd([[ set noshowmode ]])
 
 -- Highlight trailing white space
 -- NOTE: This is annoying in Mason (and was not there before I switched to lua I believe, which is weird)
@@ -36,11 +36,11 @@ vim.cmd[[ set noshowmode ]]
 
 function highlight_trailing_whitespace()
     if not vim.api.nvim_buf_get_option(0, "ro") and vim.api.nvim_buf_get_option(0, "modifiable") then
-        vim.cmd[[ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red ]]
-        vim.cmd[[ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/ ]]
-        vim.cmd[[ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ ]]
-        vim.cmd[[ autocmd InsertLeave * match ExtraWhitespace /\s\+$/ ]]
-        vim.cmd[[ autocmd BufWinLeave * call clearmatches() ]]
+        vim.cmd([[ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red ]])
+        vim.cmd([[ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/ ]])
+        vim.cmd([[ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ ]])
+        vim.cmd([[ autocmd InsertLeave * match ExtraWhitespace /\s\+$/ ]])
+        vim.cmd([[ autocmd BufWinLeave * call clearmatches() ]])
     end
 end
 

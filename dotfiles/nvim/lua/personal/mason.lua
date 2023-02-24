@@ -1,5 +1,5 @@
 require("mason").setup()
-require("mason-lspconfig").setup {
+require("mason-lspconfig").setup({
     ensure_instsalled = {
         -- "rust_analyzer",
         "clangd",
@@ -12,4 +12,4 @@ require("mason-lspconfig").setup {
         "sourcery",
         "taplo",
     },
-}
+})

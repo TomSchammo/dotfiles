@@ -47,7 +47,7 @@ vim.cmd([[
 -- compile markdown to pdf and open it in zathura
 vim.cmd([[ autocmd BufWritePost *.md silent call Recompile_Document(@%, "md") ]])
 vim.cmd(
-	[[ autocmd FileType markdown nnoremap <leader><F1> :!pandoc --from markdown+footnotes --filter pandoc-fignos --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR> ]]
+    [[ autocmd FileType markdown nnoremap <leader><F1> :!pandoc --from markdown+footnotes --filter pandoc-fignos --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR> ]]
 )
 -- TODO
 -- autocmd FileType markdown nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pandoc % -s -o "%:r".pdf && zathura "%:p:r".pdf&<CR>
@@ -59,10 +59,10 @@ vim.cmd(
 
 -- set file type of any file with 'tex' extension to tex (instead of plaintex)
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = "*.tex",
-	callback = function()
-		vim.bo.filetype = "tex"
-	end,
+    pattern = "*.tex",
+    callback = function()
+        vim.bo.filetype = "tex"
+    end,
 })
 
 -- compile tex file to pdf and open it in zathura

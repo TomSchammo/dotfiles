@@ -34,8 +34,13 @@ end
 local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 local words = {}
 
-for word in io.open(path, "r"):lines() do
-	table.insert(words, word)
+local f = io.open(path, "r")
+if f ~= nil then
+	for word in f:lines() do
+		table.insert(words, word)
+	end
+else
+	print("No spell folder in ", path)
 end
 
 require("mason-lspconfig").setup_handlers({

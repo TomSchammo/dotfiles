@@ -76,7 +76,7 @@ local plugins = {
     "windwp/nvim-autopairs",
 
     -- Autoformatting
-    "Chiel92/vim-autoformat",
+    "mhartington/formatter.nvim",
 
     -- Codi for scratchpad and virtual text
     "metakirby5/codi.vim",

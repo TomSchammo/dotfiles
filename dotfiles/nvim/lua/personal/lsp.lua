@@ -197,11 +197,6 @@ require("mason-lspconfig").setup_handlers({
     end,
 })
 
--- require'lspconfig'.pyright.setup{
---     on_attach = on_attach,
---     capabilities = capabilities,
--- }
---
 -- require('lspconfig')['clangd'].setup {
 --     cmd = {
 --         "clangd",
@@ -215,11 +210,6 @@ require("mason-lspconfig").setup_handlers({
 --         clangdFileStatus = true,
 --     },
 --
---     capabilities = capabilities,
---     on_attach = on_attach,
--- }
-
--- require('lspconfig')['bashls'].setup {
 --     capabilities = capabilities,
 --     on_attach = on_attach,
 -- }

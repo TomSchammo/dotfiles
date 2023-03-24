@@ -31,18 +31,6 @@ local on_attach = function(client)
     end
 end
 
-local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-local words = {}
-
-local f = io.open(path, "r")
-if f ~= nil then
-    for word in f:lines() do
-        table.insert(words, word)
-    end
-else
-    print("No spell folder in ", path)
-end
-
 require("mason-lspconfig").setup_handlers({
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
@@ -147,18 +135,18 @@ require("mason-lspconfig").setup_handlers({
     end,
     ["ltex"] = function()
         require("lspconfig")["ltex"].setup({
-            on_attach = on_attach,
             capabilities = capabilities,
+            on_attach = function(client)
+                require("ltex_extra").setup({
+                    load_langs = { "en-US", "de-DE" },
+                    init_check = true,
+                    path = vim.fn.stdpath("data") .. "/dictionary",
+                })
+                on_attach(client)
+            end,
 
             settings = {
-                ltex = {
-                    dictionary = {
-
-                        ["en-US"] = words,
-                        ["en-GB"] = words,
-                        ["en"] = words,
-                    },
-                },
+                ltex = {},
             },
         })
     end,
@@ -224,10 +212,6 @@ require("mason-lspconfig").setup_handlers({
 --         },
 --     },
 -- })
-
-vim.opt.spell = true
-vim.opt.spelllang = { "en_us", "de" }
-
 -- require'lspconfig'.ltex.setup{
 --     on_attach = on_attach,
 --     capabilities = capabilities,

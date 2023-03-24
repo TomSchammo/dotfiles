@@ -56,6 +56,9 @@ local plugins = {
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lua",
 
+    -- ltex-ls non standard features
+    "barreiroleo/ltex-extra.nvim",
+
     -- Snippets
     { "L3MON4D3/LuaSnip" },
     { "rafamadriz/friendly-snippets" },

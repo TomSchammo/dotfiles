@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     -- colorscheme
-    "ellisonleao/gruvbox.nvim",
+    "tomschammo/gruvbox.nvim",
     -- 'kyazdani42/nvim-web-devicons',
 
     -- comment.nvim

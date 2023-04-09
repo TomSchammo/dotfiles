@@ -18,14 +18,15 @@ local on_attach = function(client)
     vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
     vim.keymap.set("n", "<leader>E", "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<cr>", { buffer = 0 })
 
-    -- Set autocommands conditional on server_capabilities
-    vim.cmd([[
+    if client.server_capabilities.documentHighlightProvider then
+        vim.cmd([[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
         ]])
+    end
 end
 
 require("mason-lspconfig").setup_handlers({

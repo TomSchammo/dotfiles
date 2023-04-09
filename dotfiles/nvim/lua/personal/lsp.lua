@@ -19,16 +19,13 @@ local on_attach = function(client)
     vim.keymap.set("n", "<leader>E", "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<cr>", { buffer = 0 })
 
     -- Set autocommands conditional on server_capabilities
-    -- TODO doesn't work
-    if client.server_capabilities.document_highlight then
-        vim.cmd([[
+    vim.cmd([[
             augroup lsp_document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
         ]])
-    end
 end
 
 require("mason-lspconfig").setup_handlers({

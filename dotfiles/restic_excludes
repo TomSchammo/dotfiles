@@ -12,3 +12,9 @@ ${HOME}/.cache
 
 # Excluding baloo indexes
 ${HOME}/.local/share/baloo
+
+# Excluding Android toolchain
+${HOME}/Android
+#
+# Excluding media
+${HOME}/Downloads/Torrents/

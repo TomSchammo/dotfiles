@@ -12,12 +12,12 @@ vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
 vim.keymap.set("v", "<leader>y", '"+y', { noremap = true })
 
 -- remapping <leader>jp to prettify json
-vim.keymap.set("n", "<leader>jp", ":%!jq<cr>", { noremap = true })
-vim.keymap.set("v", "<leader>jp", ":%!jq<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>jp", "<cmd>%!jq<cr>", { noremap = true })
+vim.keymap.set("v", "<leader>jp", "<cmd>%!jq<cr>", { noremap = true })
 
 -- remapping <leader>jc to compact json
-vim.keymap.set("n", "<leader>jc", ":%!jq -c<cr>", { noremap = true })
-vim.keymap.set("v", "<leader>jc", ":%!jq -c<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>jc", "<cmd>%!jq -c<cr>", { noremap = true })
+vim.keymap.set("v", "<leader>jc", "<cmd>%!jq -c<cr>", { noremap = true })
 
 -- adding keymap for netrw
 vim.keymap.set("n", "<leader><S-e>", "<cmd>Explore<cr>", { noremap = true })

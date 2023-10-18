@@ -18,3 +18,6 @@ vim.keymap.set("v", "<leader>jp", ":%!jq<cr>", { noremap = true })
 -- remapping <leader>jc to compact json
 vim.keymap.set("n", "<leader>jc", ":%!jq -c<cr>", { noremap = true })
 vim.keymap.set("v", "<leader>jc", ":%!jq -c<cr>", { noremap = true })
+
+-- adding keymap for netrw
+vim.keymap.set("n", "<leader><S-e>", "<cmd>Explore<cr>", { noremap = true })

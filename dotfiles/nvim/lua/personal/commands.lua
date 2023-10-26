@@ -7,6 +7,9 @@ vim.cmd([[ command! Clean execute ":%s/  *$//g" ]])
 -- Source init.lua
 vim.cmd([[ command! Reload execute ":source ~/.config/nvim/init.lua" ]])
 
+-- Close all buffers but the current one (technically closes all the buffers and reopens the current one)
+vim.cmd([[ command! CloseAll execute ":%bd|e#"]])
+
 ---------------------------------------------------------------
 -- IP Scan
 ---------------------------------------------------------------

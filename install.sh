@@ -61,9 +61,13 @@ packages="zsh rofi neovim \
     ncdu ripgrep fd jq \
     gcc gcc-c++ make cmake \
     ruby xdotool ${PACKAGE_LIBINPUT} \
-    fzf restic"
+    fzf restic tldr"
 
 sudo ${PKG_MNGR_INSTALL} ${packages}
+
+echo "updating tldr cache..."
+
+tldr -u
 
 echo "installing fusuma using gem..."
 

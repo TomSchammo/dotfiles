@@ -63,7 +63,7 @@ packages="zsh rofi neovim \
     ruby xdotool ${PACKAGE_LIBINPUT} \
     fzf restic tldr"
 
-sudo ${PKG_MNGR_INSTALL} ${packages}
+sudo "${PKG_MNGR_INSTALL}" "${packages}"
 
 echo "updating tldr cache..."
 

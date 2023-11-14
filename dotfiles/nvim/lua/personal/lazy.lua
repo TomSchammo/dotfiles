@@ -85,7 +85,7 @@ local plugins = {
     "metakirby5/codi.vim",
 
     -- Tabnine
-    { "tzachar/cmp-tabnine", build = "./install.sh" },
+    -- { "tzachar/cmp-tabnine", build = "./install.sh" },
 
     "nvim-lualine/lualine.nvim",
 

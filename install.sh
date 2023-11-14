@@ -2,6 +2,8 @@
 
 # WIP
 
+flatpak_packages="md.obsidian.Obsidian com.spotify.Client com.discordapp.Discord"
+
 PKG_MNGR=""
 PKG_MNGR_INSTALL=""
 PKG_MNGR_UPDATE_SYSTEM=""
@@ -107,3 +109,13 @@ newgrp input
 echo "Installing rust..."
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# TODO: make sure flatpak is installed?
+
+echo "setting up flathub..."
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+echo "Installing flatpak packages..."
+
+flatpak install -y "${flatpak_packages}"

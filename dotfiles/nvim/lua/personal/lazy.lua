@@ -64,13 +64,13 @@ local plugins = {
     { "rafamadriz/friendly-snippets" },
 
     -- Debugging
-    "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
-    "theHamsta/nvim-dap-virtual-text",
-    "nvim-telescope/telescope-dap.nvim",
+    -- "mfussenegger/nvim-dap",
+    -- "rcarriga/nvim-dap-ui",
+    -- "theHamsta/nvim-dap-virtual-text",
+    -- "nvim-telescope/telescope-dap.nvim",
 
     -- python debugging
-    "mfussenegger/nvim-dap-python",
+    -- "mfussenegger/nvim-dap-python",
 
     -- rust stuff
     "simrat39/rust-tools.nvim",

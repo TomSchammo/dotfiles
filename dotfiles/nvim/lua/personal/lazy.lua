@@ -75,6 +75,17 @@ local plugins = {
     -- rust stuff
     "simrat39/rust-tools.nvim",
 
+    -- flutter stuff
+    {
+        "akinsho/flutter-tools.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "stevearc/dressing.nvim", -- optional for vim.ui.select
+        },
+        config = true,
+    },
+
     -- Autopairs
     "windwp/nvim-autopairs",
 

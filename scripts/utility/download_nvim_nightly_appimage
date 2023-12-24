@@ -1,0 +1,42 @@
+#!/bin/bash
+
+download() {
+    target="$1" # format: "owner_name/repo_name"
+    grep_pattern="$2"
+
+    # issue a request
+    request_head="Accept: application/vnd.github.v3+json"
+    request_url="https://api.github.com/repos/${target}/releases/tags/nightly"
+    download_url=$(curl -H "$request_head" "$request_url" 2>/dev/null)
+
+    # filter and pre-process
+    download_url=$(echo -e "$download_url" | grep "browser_download_url")
+    download_url=$(echo -e "$download_url" | cut -d'"' -f 4)
+    download_url=$(echo -e "$download_url" | grep -E "$grep_pattern")
+    curl -OL "$download_url"
+}
+
+echo "Downloading appimage..."
+download "neovim/neovim" "nvim.appimage\$"
+echo "Downloading shasum..."
+download "neovim/neovim" "nvim.appimage.sha256sum\$"
+
+echo "Checking shasum..."
+if sha256sum -c nvim.appimage.sha256sum; then
+
+    read -p "Do you want to install neovim globally (the program might prompt you for your password)[y/n]" -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Installing neovim to /usr/bin/nvim"
+        chmod +x nvim.appimage && sudo mv -v nvim.appimage /usr/bin/nvim
+    else
+        echo "Installing neovim to ~/.local/bin/nvim"
+        chmod +x nvim.appimage && mv -v nvim.appimage ~/.local/bin/nvim
+    fi
+
+    echo "Cleaning up..."
+    rm -v nvim.appimage.sha256sum
+else
+    echo "Cleaning up..."
+    rm -v nvim.appimage nvim.appimage.sha256sum
+fi

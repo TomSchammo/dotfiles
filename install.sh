@@ -2,7 +2,7 @@
 
 # WIP
 
-flatpak_packages="md.obsidian.Obsidian com.spotify.Client com.discordapp.Discord"
+flatpak_packages="md.obsidian.Obsidian com.spotify.Client com.discordapp.Discord app/com.github.tchx84.Flatseal/x86_64/stable"
 
 PKG_MNGR=""
 PKG_MNGR_INSTALL=""

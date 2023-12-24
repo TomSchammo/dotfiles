@@ -284,6 +284,13 @@ local plugins = {
             vim.keymap.set("n", "<leader>rr", "<cmd>:ObsidianRename<CR>", { noremap = true })
         end,
     },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
 }
 local opts = {}
 

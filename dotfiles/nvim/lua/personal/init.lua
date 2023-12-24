@@ -39,7 +39,6 @@ require("personal.git")
 -- tools
 require("personal.neogen")
 require("personal.autoformat")
-require("personal.debugger")
 
 -- buffer and status lines
 require("personal.bufferline")

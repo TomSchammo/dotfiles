@@ -11,10 +11,12 @@ require("gruvbox").setup({
     undercurl = true,
     underline = true,
     bold = true,
+    -- italic seems broken in alacritty + tmux (don't know about alactritty on its own or wezterm)
     italic = {
         strings = false,
         operators = false,
         comments = false,
+        folds = false,
     },
     strikethrough = true,
     invert_selection = false,

@@ -25,7 +25,7 @@ vim.cmd([[
                 echo "DEBUG: Comping latex..."
                 " execute system("pdflatex " . shellescape(a:filename) . " -file-line-error -halt-on-error")
                 " execute system("pdflatex " . shellescape(a:filename) . " -file-line-error")
-                execute system("latexmk " . shellescape(a:filename) . " -pdf")
+                execute system("pdflatex -output-directory='./output' " . shellescape(a:filename))
                 " echo "DEBUG: Cleaning directory..."
                 " execute system("rm *.log *.out *.aux")
                 " execute system("rm " . fnamemodify(a:filename, ":r") . ".log  " . fnamemodify(a:filename, ":r") . ".fls " . fnamemodify(a:filename, ":r") . ".aux " . fnamemodify(a:filename, ":r") . ".fdb_latexmk")
@@ -45,7 +45,8 @@ vim.cmd([[
 ---------------------------------------------------------------
 
 -- compile markdown to pdf and open it in zathura
-vim.cmd([[ autocmd BufWritePost *.md silent call Recompile_Document(@%, "md") ]])
+-- for some reason this causes issues when using files in obsidian that are created using netrw and not obsidiannew
+-- vim.cmd([[ autocmd BufWritePost *.md silent call Recompile_Document(@%, "md") ]])
 vim.cmd(
     [[ autocmd FileType markdown nnoremap <leader><F1> :!pandoc --from markdown+footnotes --filter pandoc-fignos --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR> ]]
 )
@@ -70,6 +71,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 -- autocmd BufWritePost *.tex silent call Recompile_Document(@%, "tex")
 
 -- autocmd FileType tex nnoremap <leader><F1> :!pdflatex % && zathura "%:p:r".pdf&<CR>
-vim.cmd([[ autocmd FileType tex nnoremap <leader><F1> :!latexmk % -pdf && zathura "%:p:r".pdf&<CR> ]])
+-- vim.cmd([[ autocmd FileType tex nnoremap <leader><F1> :!latexmk % -pdf && zathura "%:p:r".pdf&<CR> ]])
+vim.cmd(
+    [[ autocmd FileType tex nnoremap <leader><F1> :!pdflatex -output-directory="./output" % && okular ./output/"%:r".pdf&<CR> ]]
+)
 -- TODO
 -- autocmd FileType tex nnoremap <leader><F1> :sp <bar> resize 20 <bar> term pdflatex % && zathura "%:p:r".pdf<CR>

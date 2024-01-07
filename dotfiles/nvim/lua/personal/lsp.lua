@@ -4,7 +4,7 @@ local on_attach = function(client)
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
 
-    if vim.bo.filetype == rust then
+    if vim.bo.filetype == "rust" then
         vim.keymap.set("n", "K", "<cmd>RustHoverActions<cr>", { buffer = 0 })
     else
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })

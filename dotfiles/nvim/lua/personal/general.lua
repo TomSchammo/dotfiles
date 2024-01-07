@@ -47,3 +47,23 @@ end
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
+
+-- TODO:
+-- FIXME:
+
+-- highlight TODOs and stuff like that
+-- vim.cmd([[
+--     augroup vimrc_todo
+--         au!
+--         au Syntax * syn match MyTodo /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX):/
+--               \ containedin=.*Comment,vimCommentTitle
+--     augroup END
+--     hi def link MyTodo Todo
+-- ]])
+--
+
+-- vim.cmd([[
+--       autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+--       autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+--       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+-- ]])

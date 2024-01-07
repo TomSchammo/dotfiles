@@ -9,7 +9,6 @@ require("mason-lspconfig").setup({
         "texlab",
         "marksman",
         "pyright",
-        "sourcery",
         "taplo",
     },
 })

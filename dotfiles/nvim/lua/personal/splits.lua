@@ -9,6 +9,13 @@ vim.keymap.set("n", "<leader><down>", "<C-w>j", { noremap = true })
 vim.keymap.set("n", "<leader><up>", "<C-w>k", { noremap = true })
 vim.keymap.set("n", "<leader><right>", "<C-w>l", { noremap = true })
 
+-- Also use <leader> + hjkl for split navigation
+-- NOTE: most of these don't work because of other keybindings (like <leader>jp)
+vim.keymap.set("n", "<leader>h", "<leader><left>", { noremap = false })
+vim.keymap.set("n", "<leader>j", "<leader><down>", { noremap = false })
+vim.keymap.set("n", "<leader>k", "<leader><up>", { noremap = false })
+vim.keymap.set("n", "<leader>l", "<leader><right>", { noremap = false })
+
 -- Make adjusting split sizes a bit more friendly
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize +3<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize -3<CR>", { noremap = true, silent = true })

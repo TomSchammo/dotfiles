@@ -357,7 +357,6 @@ cmp.setup({
     },
     sources = {
         { name = "nvim_lsp" },
-        { name = "cmp_tabnine" },
         { name = "luasnip" },
         { name = "spell", keyword_length = 3 },
         { name = "path" },

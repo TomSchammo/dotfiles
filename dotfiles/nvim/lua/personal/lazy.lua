@@ -95,9 +95,6 @@ local plugins = {
     -- Codi for scratchpad and virtual text
     "metakirby5/codi.vim",
 
-    -- Tabnine
-    -- { "tzachar/cmp-tabnine", build = "./install.sh" },
-
     "nvim-lualine/lualine.nvim",
 
     -- vim signature to manage marks

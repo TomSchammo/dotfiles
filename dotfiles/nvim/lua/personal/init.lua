@@ -24,9 +24,6 @@ require("personal.comments")
 require("personal.telescope")
 require("personal.treesitter")
 
--- AI assistance
-require("personal.tabnine")
-
 -- LSP
 require("personal.lsp")
 require("personal.mason")

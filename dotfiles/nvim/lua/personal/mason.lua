@@ -10,5 +10,7 @@ require("mason-lspconfig").setup({
         "marksman",
         "pyright",
         "taplo",
+        "lua_ls",
+        "nil_ls",
     },
 })

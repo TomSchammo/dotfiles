@@ -45,7 +45,8 @@ vim.cmd([[
 ---------------------------------------------------------------
 
 -- compile markdown to pdf and open it in zathura
-vim.cmd([[ autocmd BufWritePost *.md silent call Recompile_Document(@%, "md") ]])
+-- for some reason this causes issues when using files in obsidian that are created using netrw and not obsidiannew
+-- vim.cmd([[ autocmd BufWritePost *.md silent call Recompile_Document(@%, "md") ]])
 vim.cmd(
     [[ autocmd FileType markdown nnoremap <leader><F1> :!pandoc --from markdown+footnotes --filter pandoc-fignos --pdf-engine=xelatex % -s -o "%:r".pdf && zathura "%:r".pdf&<CR> ]]
 )

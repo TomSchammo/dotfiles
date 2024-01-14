@@ -229,7 +229,7 @@ local plugins = {
 
                 -- `note.metadata` contains any custom fields in the frontmatter.
                 -- So here we just make sure those fields are kept in the frontmatter.
-                if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
+                if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
                     for k, v in pairs(note.metadata) do
                         out[k] = v
                     end

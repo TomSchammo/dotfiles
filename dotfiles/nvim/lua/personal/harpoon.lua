@@ -9,10 +9,10 @@ vim.keymap.set("n", "<leader>m", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
-vim.keymap.set("n", "<C-l>", function()
+vim.keymap.set("n", "<A-l>", function()
     harpoon:list():next()
 end)
-vim.keymap.set("n", "<C-k>", function()
+vim.keymap.set("n", "<A-k>", function()
     harpoon:list():prev()
 end)
 

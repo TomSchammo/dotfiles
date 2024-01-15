@@ -9,7 +9,6 @@ require("personal.commands")
 -- settings for different languages and file types
 require("personal.python")
 require("personal.rust")
-require("personal.flutter")
 require("personal.documents")
 
 -- package manage

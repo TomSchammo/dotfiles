@@ -139,7 +139,7 @@ local plugins = {
 
             -- Optional, set the log level for Obsidian. This is an integer corresponding to one of the log
             -- levels defined by "vim.log.levels.*" or nil, which is equivalent to DEBUG (1).
-            log_level = vim.log.levels.DEBUG,
+            log_level = vim.log.levels.WARN,
 
             daily_notes = {
                 -- Optional, if you keep daily notes in a separate directory.

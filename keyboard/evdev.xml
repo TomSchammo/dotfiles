@@ -1,0 +1,14 @@
+<layout>
+    <configItem>
+        <name>tosch</name>
+        <!-- Keyboard indicator for German layouts -->
+        <shortDescription>custom</shortDescription>
+        <description>Custom German (Switzerland, no dead keys)</description>
+        <countryList>
+            <iso3166Id>CH</iso3166Id>
+            </countryList>
+        <languageList>
+            <iso639Id>deu</iso639Id>
+        </languageList>
+    </configItem>
+</layout>

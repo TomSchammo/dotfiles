@@ -1,5 +1,5 @@
 // Custom keyboard layout based on the Swiss-German (no dead keys).
-// It makes `/` more acessible by replacing it with `¨`, which is very handy for programming and working on a compuer in general
+// It makes `/` more acessible by replacing it with `¨`, which is very handy for programming and working on a computer in general.
 
 
 default partial alphanumeric_keys

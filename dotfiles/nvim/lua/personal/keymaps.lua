@@ -11,6 +11,10 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { noremap = true })
 vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
 vim.keymap.set("v", "<leader>y", '"+y', { noremap = true })
 
+-- move highlighted blocks using the move command
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- remapping <leader>jp to prettify json
 vim.keymap.set("n", "<leader>jp", "<cmd>%!jq<cr>", { noremap = true })
 vim.keymap.set("v", "<leader>jp", "<cmd>%!jq<cr>", { noremap = true })

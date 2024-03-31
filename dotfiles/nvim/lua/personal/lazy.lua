@@ -19,6 +19,9 @@ local plugins = {
     -- comment.nvim
     "numToStr/Comment.nvim",
 
+    -- undotree
+    "mbbill/undotree",
+
     -- Mason
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",

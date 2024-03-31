@@ -22,6 +22,7 @@ require("personal.autopairs")
 require("personal.comments")
 require("personal.telescope")
 require("personal.treesitter")
+require("personal.undotree")
 
 -- LSP
 require("personal.lsp")

@@ -18,8 +18,7 @@ local plugins = {
     -- comment.nvim
     "numToStr/Comment.nvim",
 
-    -- undotree
-    "mbbill/undotree",
+    require("personal.undotree"),
 
     -- Mason
     "williamboman/mason.nvim",

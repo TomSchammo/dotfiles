@@ -89,8 +89,7 @@ local plugins = {
     -- vim signature to manage marks
     "kshenoy/vim-signature",
 
-    -- bufferline
-    { "akinsho/bufferline.nvim", version = "v3.*", dependencies = "nvim-tree/nvim-web-devicons" },
+    require("personal.bufferline"),
 
     { "tpope/vim-obsession", cmd = "Obsession" },
 

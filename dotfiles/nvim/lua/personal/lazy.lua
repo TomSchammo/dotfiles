@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     -- colorscheme
     "tomschammo/gruvbox.nvim",
-    -- 'kyazdani42/nvim-web-devicons',
 
     -- comment.nvim
     "numToStr/Comment.nvim",
@@ -97,7 +96,6 @@ local plugins = {
 
     { "tpope/vim-obsession", cmd = "Obsession" },
 
-    -- obsidian
     require("personal.obsidian"),
     require("personal.harpoon"),
 }

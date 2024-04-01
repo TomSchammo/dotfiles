@@ -99,13 +99,7 @@ local plugins = {
 
     -- obsidian
     require("personal.obsidian"),
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
+    require("personal.harpoon"),
 }
 local opts = {}
 

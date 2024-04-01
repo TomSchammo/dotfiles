@@ -43,7 +43,7 @@ local plugins = {
     "nvim-telescope/telescope-file-browser.nvim",
 
     require("personal.treesitter"),
-    { "danymat/neogen", cmd = "Neogen", keys = "<leader>do" },
+    require("personal.neogen"),
 
     -- Neovim built-in lsp
     "neovim/nvim-lspconfig",

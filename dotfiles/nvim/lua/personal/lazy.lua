@@ -15,8 +15,7 @@ local plugins = {
     -- colorscheme
     "tomschammo/gruvbox.nvim",
 
-    -- comment.nvim
-    "numToStr/Comment.nvim",
+    require("personal.comments"),
 
     require("personal.undotree"),
 

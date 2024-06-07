@@ -20,8 +20,8 @@ local plugins = {
     require("personal.undotree"),
 
     -- Mason
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    require("personal.mason"),
+    require("personal.mason-lspconfig"),
 
     -- vim-surround
     "tpope/vim-surround",

@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     -- colorscheme
-    "tomschammo/gruvbox.nvim",
+    require("personal.colorscheme"),
 
     require("personal.comments"),
 

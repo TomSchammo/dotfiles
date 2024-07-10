@@ -166,6 +166,17 @@ require("mason-lspconfig").setup_handlers({
             },
         })
     end,
+    ["pyright"] = function()
+        require("lspconfig")["pyright"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                python = {
+                    pythonPath = vim.fn.exepath("python3.11"),
+                },
+            },
+        })
+    end,
     ["lua_ls"] = function()
         require("lspconfig")["lua_ls"].setup({
             on_attach = on_attach,

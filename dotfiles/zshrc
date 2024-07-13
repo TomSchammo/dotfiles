@@ -4,7 +4,7 @@ setopt correct
 
 # Variables for Make
 export CC="gcc"
-export CFLAGS="-ggdb3 -O0 -std=c11 -Wall -Werror"
+export CFLAGS=""
 
 # Generic variables
 export BROWSER=brave

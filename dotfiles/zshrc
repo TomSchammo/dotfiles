@@ -1,6 +1,6 @@
 # General settings
-setopt nobeep
-setopt correct
+# setopt nobeep
+# setopt correct
 
 # Variables for Make
 export CC="gcc"
@@ -33,7 +33,7 @@ autoload -Uz compinit
 compinit -i
 
 # History
-export HISTFILE=~/.config/zsh/histfile
+export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 setopt autocd
@@ -42,10 +42,10 @@ setopt autocd
 WORDCHARS=${WORDCHARS//\/[&.;]}
 
 # Do not write a duplicate event to the history file.
-setopt HIST_SAVE_NO_DUPS
-
-setopt appendhistory
-setopt inc_append_history
+# setopt HIST_SAVE_NO_DUPS
+#
+# setopt appendhistory
+# setopt inc_append_history
 
 # Aliases
 alias ls='ls --color=auto'
@@ -76,7 +76,7 @@ alias python='python3'
 
 
 # Exports
-export PATH="$HOME/.scripts:/usr/local/bin:$PATH"
+# export PATH="$HOME/.scripts:/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export BACKGROUND='/home/tom/Pictures/Wallpapers/city_pixelart.png'

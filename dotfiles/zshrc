@@ -10,8 +10,8 @@ export CFLAGS=""
 export BROWSER=brave
 export EDITOR=nvim
 export VISUAL=nvim
-# export TERM=linux
-export TERM=alacritty
+export TERM=xterm-256color
+# export TERM=alacritty
 export TERMINAL=alacritty
 
 DISABLE_AUTO_TITLE="true"

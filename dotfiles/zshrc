@@ -82,9 +82,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export BACKGROUND='/home/tom/Pictures/Wallpapers/city_pixelart.png'
 export LTEX_GLOBAL_STORAGE_PATH="$XDG_CONFIG_HOME/nvim/ltex-settings"
 
-export CPATH="/opt/homebrew/opt/libomp/include:/opt/homebrew/Cellar/boost/1.85.0/include:$CPATH"
-export LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.85.0/lib:$LIBRARY_PATH"
-export LD_LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.85.0/lib:$LD_LIBRARY_PATH"
+export CPATH="/opt/homebrew/opt/libomp/include:/opt/homebrew/Cellar/boost/1.87.0/include:$CPATH"
+export LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.87.0/lib:$LIBRARY_PATH"
+export LD_LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.87.0/lib:$LD_LIBRARY_PATH"
 
 export TORCH_PATH="/opt/homebrew/lib/python3.11/site-packages/torch/share/cmake"
 

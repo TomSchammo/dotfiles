@@ -51,7 +51,7 @@ mods = "Control|Shift"
 [scrolling]
 history = 5000
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/bin/zsh"
 
@@ -65,3 +65,5 @@ decorations_theme_variant = "dark"
 [window.class]
 general = "Alacritty"
 instance = "Alacritty"
+
+[terminal]

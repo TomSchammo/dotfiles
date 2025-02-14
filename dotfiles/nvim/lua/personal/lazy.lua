@@ -95,6 +95,7 @@ local plugins = {
 
     require("personal.obsidian"),
     require("personal.harpoon"),
+    require("personal.oil"),
 }
 local opts = {}
 

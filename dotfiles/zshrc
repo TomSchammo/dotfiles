@@ -142,3 +142,4 @@ source ~/.exports
 export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/libomp/19.1.6/lib/:/opt/homebrew/lib/python3.11/site-packages/torch/lib/:$DYLD_LIBRARY_PATH
 
 export FZF_DEFAULT_OPTS=""
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

@@ -37,8 +37,7 @@ local plugins = {
 
     -- Telescope for fuzzy finding
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
+    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     "nvim-telescope/telescope-project.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
 

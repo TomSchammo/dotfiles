@@ -78,7 +78,7 @@ local plugins = {
     require("personal.autopairs"),
 
     -- Autoformatting
-    "mhartington/formatter.nvim",
+    require("personal.autoformat"),
 
     -- Codi for scratchpad and virtual text
     "metakirby5/codi.vim",

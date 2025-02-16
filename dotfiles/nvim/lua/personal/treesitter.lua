@@ -20,7 +20,6 @@ return {
                 "bibtex",
                 "latex",
                 "vim",
-                "bash",
                 "diff",
                 "gitcommit",
                 "gitignore",

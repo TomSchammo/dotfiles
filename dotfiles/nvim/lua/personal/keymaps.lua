@@ -23,5 +23,5 @@ vim.keymap.set("v", "<leader>jp", "<cmd>%!jq<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>jc", "<cmd>%!jq -c<cr>", { noremap = true })
 vim.keymap.set("v", "<leader>jc", "<cmd>%!jq -c<cr>", { noremap = true })
 
--- adding keymap for netrw
-vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", { noremap = true })
+-- adding keymap for oil
+vim.keymap.set("n", "<leader>e", "<cmd>Oil<cr>", { noremap = true })

@@ -75,7 +75,7 @@ local plugins = {
     "simrat39/rust-tools.nvim",
 
     -- Autopairs
-    "windwp/nvim-autopairs",
+    require("personal.autopairs"),
 
     -- Autoformatting
     "mhartington/formatter.nvim",

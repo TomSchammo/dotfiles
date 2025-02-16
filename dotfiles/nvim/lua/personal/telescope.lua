@@ -39,7 +39,9 @@ vim.keymap.set("n", "<C-g>", builtin.git_commits, {})
 vim.keymap.set("n", "<C-s>", builtin.live_grep, {})
 -- vim.keymap.set("n", "<C-s>", builtin.lsp_document_symbols, {})
 
-vim.cmd([[ command! B execute ":Telescope buffers" ]])
+vim.api.nvim_create_user_command("B", function()
+    vim.cmd("Telescope buffers")
+end, { desc = "Alias to open telescope buffers." })
 
 vim.keymap.set("n", "<leader><leader>p", require("telescope").extensions.project.project, {})
 vim.keymap.set("n", "<leader><leader>d", require("telescope").extensions.file_browser.file_browser, {})

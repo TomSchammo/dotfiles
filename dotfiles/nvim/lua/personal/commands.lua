@@ -7,9 +7,6 @@ vim.api.nvim_create_user_command("Clean", function()
     vim.cmd("%s/  *$//g")
 end, { desc = "Remove any trailing whitespace." })
 
--- Source init.lua
-vim.cmd([[ command! Reload execute ":source ~/.config/nvim/init.lua" ]])
-
 vim.api.nvim_create_user_command(
     "CloseAll",
     function()

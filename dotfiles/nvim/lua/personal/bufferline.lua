@@ -4,7 +4,8 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function(_, opts)
         require("bufferline").setup({})
-
-        vim.keymap.set("n", "<C-w><C-w>", ":bdelete<cr>", { noremap = true })
     end,
+    keys = {
+        { "<C-w><C-w>", "<cmd>bdelete<cr>", mode = { "n" }, opts = { noremap = true }, desc = "Close current buffer." },
+    },
 }

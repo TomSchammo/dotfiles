@@ -29,11 +29,7 @@ local plugins = {
     -- Vim Man Page
     "vim-utils/vim-man",
 
-    -- Basic Git integration
-    "tpope/vim-fugitive",
-
-    -- Make Git integration prettier
-    "mhinz/vim-signify",
+    require("personal.git"),
 
     -- Telescope for fuzzy finding
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },

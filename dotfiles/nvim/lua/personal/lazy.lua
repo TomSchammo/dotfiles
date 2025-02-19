@@ -79,7 +79,7 @@ local plugins = {
     -- Codi for scratchpad and virtual text
     "metakirby5/codi.vim",
 
-    "nvim-lualine/lualine.nvim",
+    require("personal.statusline"),
 
     -- vim signature to manage marks
     "kshenoy/vim-signature",

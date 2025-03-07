@@ -93,6 +93,26 @@ return {
                     end,
                 },
 
+                json = {
+                    require("formatter.filetypes.json").prettier,
+
+                    function()
+                        return {
+                            exe = "prettier",
+                        }
+                    end,
+                },
+
+                yaml = {
+                    require("formatter.filetypes.yaml").prettier,
+
+                    function()
+                        return {
+                            exe = "prettier",
+                        }
+                    end,
+                },
+
                 -- Use the special "*" filetype for defining formatter configurations on
                 -- any filetype
                 ["*"] = {

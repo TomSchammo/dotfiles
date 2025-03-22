@@ -7,7 +7,6 @@ require("personal.general")
 require("personal.commands")
 
 -- settings for different languages and file types
-require("personal.rust")
 require("personal.documents")
 
 -- package manage

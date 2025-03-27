@@ -76,9 +76,6 @@ local plugins = {
     -- Autoformatting
     require("personal.autoformat"),
 
-    -- Codi for scratchpad and virtual text
-    "metakirby5/codi.vim",
-
     require("personal.statusline"),
 
     -- vim signature to manage marks

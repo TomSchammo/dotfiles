@@ -26,7 +26,7 @@ foreground = "0xebdbb2"
 TERM = "alacritty"
 
 [font]
-size = 11.0
+size = 12.0
 
 [font.bold]
 family = "SauceCodePro Nerd Font"
@@ -47,6 +47,17 @@ style = "Regular"
 action = "SpawnNewInstance"
 key = "Return"
 mods = "Control|Shift"
+
+[[keyboard.bindings]]
+key = "K"
+mods = "Command"
+chars = "\u001Bk"  # Cmd+K -> Alt+K
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Command"
+chars = "\u001Bl"  # Cmd+L -> Alt+L
+
 
 [scrolling]
 history = 5000

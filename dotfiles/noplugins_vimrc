@@ -3,7 +3,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " colorscheme
-colorscheme pablo " retrobox
+try
+  colorscheme retrobox
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme pablo
+endtry
 
 " syntax highliting
 syntax on

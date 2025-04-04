@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " colorscheme
-colorscheme retrobox
+colorscheme pablo " retrobox
 
 " syntax highliting
 syntax on

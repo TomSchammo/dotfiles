@@ -1,0 +1,165 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ $# -eq 0 ]; then
+    echo "Error: Please provide a path as an argument"
+    echo "Usage: $0 <path>"
+    exit 1
+fi
+
+# Check if the provided path exists
+if [ ! -d "$1" ]; then
+    echo "Error: Directory '$1' does not exist"
+    exit 1
+fi
+
+# Change to the provided directory
+cd "$1"
+
+# Verify the directory change was successful
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to change to directory '$1'"
+    exit 1
+fi
+
+echo "Successfully changed to directory: $(pwd)"
+
+touch CMakeLists.txt
+
+echo "Created CMakeLists.txt"
+
+touch main.cpp
+
+echo "Created main.cpp"
+
+touch .gitignore
+
+cat > .gitignore << 'EOF'
+**/build/
+.vscode/
+.idea/
+**/.DS_Store
+compile_commands.json
+EOF
+
+echo "Created .gitignore"
+
+mkdir src include test
+
+# Write CMakeLists.txt content
+cat > CMakeLists.txt << 'EOF'
+cmake_minimum_required(VERSION 3.20)
+project(MyProject)
+
+# Set C++ standard to 20
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Find all source files in src directory
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+# Create main executable
+add_executable(${PROJECT_NAME} ${SOURCES} main.cpp)
+
+# Include directories
+target_include_directories(${PROJECT_NAME} PRIVATE include)
+
+target_link_libraries(${PROJECT_NAME}
+  # add dependencies here
+)
+
+
+# Fetch and configure Google Test
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG release-1.12.1
+)
+FetchContent_MakeAvailable(googletest)
+
+# Enable testing
+enable_testing()
+
+# Manually specify test source files (subset of main sources needed for testing)
+file(GLOB_RECURSE TEST_CPP_SOURCES
+    # Add specific source files that need to be tested here
+    # "src/file1.cpp"
+    # "src/file2.cpp"
+)
+
+# Find all test files in test directory
+file(GLOB_RECURSE TEST_SOURCES "test/*.cpp")
+
+# Create test executable
+add_executable(${PROJECT_NAME}_tests ${TEST_SOURCES} ${TEST_CPP_SOURCES})
+
+# Link Google Test
+target_link_libraries(${PROJECT_NAME}_tests gtest gtest_main)
+
+# Include directories for tests
+target_include_directories(${PROJECT_NAME}_tests PRIVATE include src)
+
+# Add tests to CTest
+add_test(NAME ${PROJECT_NAME}_tests COMMAND ${PROJECT_NAME}_tests)
+
+# Custom targets
+add_custom_target(compile DEPENDS ${PROJECT_NAME})
+add_custom_target(tests DEPENDS ${PROJECT_NAME}_tests)
+EOF
+
+echo "Configured CMakeLists.txt with C++20, Google Test, and manual file specification"
+
+touch Makefile
+
+# Write Makefile content
+cat > Makefile << 'EOF'
+# Default target
+.PHONY: all build compile tests test clean
+
+# Default target builds the project
+all: build
+
+# Build the main project
+build: compile
+
+# Configure and build the project
+compile:
+	@mkdir -p build
+	@cd build && cmake ..
+	@cd build && cmake --build . --target compile
+
+# Build tests
+tests:
+	@mkdir -p build
+	@cd build && cmake ..
+	@cd build && cmake --build . --target tests
+
+# Run tests
+test: tests
+	@cd build && ctest --output-on-failure
+
+# Clean build directory
+clean:
+	@rm -rf build
+	@echo "Build directory cleaned"
+
+# Help target
+help:
+	@echo "Available targets:"
+	@echo "  build/compile - Build the main project (default)"
+	@echo "  tests         - Build the test executable"
+	@echo "  test          - Build and run tests"
+	@echo "  clean         - Remove build directory"
+	@echo "  help          - Show this help message"
+EOF
+
+touch .clang-format
+
+cat > .clang-format << 'EOF'
+---
+Language: Cpp
+BasedOnStyle: LLVM
+SortIncludes: CaseSensitive
+...
+EOF

@@ -161,5 +161,6 @@ cat > .clang-format << 'EOF'
 Language: Cpp
 BasedOnStyle: LLVM
 SortIncludes: CaseSensitive
+ColumnLimit: 100
 ...
 EOF

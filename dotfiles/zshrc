@@ -2,8 +2,8 @@
 # setopt nobeep
 # setopt correct
 
-alias gcc="/opt/homebrew/Cellar/gcc/14.1.0_2/bin/gcc-14"
-alias g++="/opt/homebrew/Cellar/gcc/14.1.0_2/bin/g++-14"
+alias gcc="/opt/homebrew/Cellar/gcc/15.1.0/bin/gcc-15"
+alias g++="/opt/homebrew/Cellar/gcc/15.1.0/bin/g++-15"
 
 # Variables for Make
 # export CC="gcc"

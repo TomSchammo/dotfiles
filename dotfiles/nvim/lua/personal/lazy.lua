@@ -76,12 +76,12 @@ local plugins = {
     -- Autoformatting
     require("personal.autoformat"),
 
+    -- buffer and status lines
+    require("personal.bufferline"),
     require("personal.statusline"),
 
     -- vim signature to manage marks
     "kshenoy/vim-signature",
-
-    require("personal.bufferline"),
 
     { "tpope/vim-obsession", cmd = "Obsession" },
 

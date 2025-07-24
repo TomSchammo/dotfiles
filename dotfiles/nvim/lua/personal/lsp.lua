@@ -208,59 +208,6 @@ require("mason-lspconfig").setup({
     },
 })
 
--- require('lspconfig')['clangd'].setup {
---     cmd = {
---         "clangd",
---         "--background-index",
---         "--suggest-missing-includes",
---         "--clang-tidy",
---         "--header-insertion=iwyu",
---     },
---     -- Required for lsp-status
---     init_options = {
---         clangdFileStatus = true,
---     },
---
---     capabilities = capabilities,
---     on_attach = on_attach,
--- }
-
--- NOTE: this is very slow and causes nvim to lag
--- require('cmp').setup({
---     sources = {
---         {
---             name = 'spell',
---             option = {
---                 keep_all_entries = false,
---                 enable_in_context = function()
---                     return require('cmp.config.context').in_treesitter_capture('spell')
---                     -- return true
---                 end,
---             },
---         },
---     },
--- })
--- require'lspconfig'.ltex.setup{
---     on_attach = on_attach,
---     capabilities = capabilities,
---     settings = {
---         ltex =  {
---             -- language = "en"
---             language = "de-DE",
---     --         dictionary = {
---     --             ["en-US"] = words,
---     --             ["en-UK"] = words,
---     --             ["en"] = words,
---     --         }
---             configurationTarget = {
---                 dictionary = "user",
---                 disabledRules = "user",
---                 hiddenFalsePositives = "user",
---             }
---         }
---     }
--- }
-
 require("rust-tools").setup({
 
     -- https://github.com/simrat39/rust-tools.nvim
@@ -382,18 +329,3 @@ vim.diagnostic.config({
     -- disable virtual text
     -- virtual_text = false
 })
-
--- automatically show line diagnostics
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-
--- Autopairs
--- require("nvim-autopairs.completion.cmp").setup({
---     map_cr = true,
---     map_complete = true,
---     auto_select = true
--- })
-
--- Database completion
--- vim.api.nvim_exec([[
--- autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
--- ]], false)

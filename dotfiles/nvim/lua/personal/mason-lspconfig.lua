@@ -2,7 +2,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function(_, opts)
         require("mason-lspconfig").setup({
-            ensure_instsalled = {
+            ensure_installed = {
                 -- "rust_analyzer",
                 "clangd",
                 "bashls",

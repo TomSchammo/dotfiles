@@ -57,7 +57,7 @@ return {
                         return {
                             exe = "clang-format",
                             args = {
-                                "--style=llvm",
+                                "--style='{BasedOnStyle: llvm, ColumnLimit: 100}'",
                                 "--sort-includes",
                             },
                         }

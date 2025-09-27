@@ -29,184 +29,278 @@ local on_attach = function(client)
     end
 end
 
-require("mason-lspconfig").setup({
-    handlers = {
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        function(server_name) -- default handler (optional)
-            require("lspconfig")[server_name].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-            })
-        end,
-        -- Next, you can provide a dedicated handler for specific servers.
-        -- For example, a handler override for the `rust_analyzer`:
-        -- NOTE: for some reason this does not work, which is why I have rust things still externally.
-        --       I'll deal with that later.
-        ["rust_analyzer"] = function()
-            require("rust-tools").setup({
-                -- https://github.com/simrat39/rust-tools.nvim
-                tools = {
-                    -- whether to show hover actions inside the hover window
-                    -- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
-                    -- default: true
-                    autoSetHints = true,
-                    runnables = {
-                        use_telescope = true,
-                    },
-                    inlay_hints = {
+-- Configure LSP servers directly (mason-lspconfig automatically enables installed servers)
+local lspconfig = require("lspconfig")
 
-                        chainingHints = true,
-                        maxLength = 40,
-                        parameterHints = true,
-                        typeHints = true,
+-- Default setup for servers that don't need special configuration
+lspconfig.bashls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 
-                        only_current_line = false,
-                        show_parameter_hints = true,
-                        parameter_hints_prefix = "> ",
-                        -- parameter_hints_prefix = "<- ",
+lspconfig.jsonls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 
-                        -- TODO this is not a valid argument it appears
-                        -- other_hints_prefix "> ",
-                        max_len_align = false,
-                        right_align = false,
-                        highlight = "Comment",
-                    },
-                },
+lspconfig.marksman.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 
-                -- options same as lsp hover / vim.lsp.util.open_floating_preview()
-                hover_actions = {
-                    -- the border that is used for the hover window
-                    -- see vim.api.nvim_open_win()
-                    border = {
-                        { "╭", "FloatBorder" },
-                        { "─", "FloatBorder" },
-                        { "╮", "FloatBorder" },
-                        { "│", "FloatBorder" },
-                        { "╯", "FloatBorder" },
-                        { "─", "FloatBorder" },
-                        { "╰", "FloatBorder" },
-                        { "│", "FloatBorder" },
-                    },
+lspconfig.taplo.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
 
-                    -- whether the hover action window gets automatically focused
-                    -- default: false
-                    auto_focus = false,
-                },
+-- Specific server configurations
+lspconfig.ltex.setup({
+    capabilities = capabilities,
+    on_attach = function(client)
+        require("ltex_extra").setup({
+            load_langs = { "en-US", "de-DE" },
+            init_check = true,
+            path = vim.fn.stdpath("data") .. "/dictionary",
+        })
+        on_attach(client)
+    end,
 
-                server = {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-
-                    -- standalone file support
-                    -- setting it to false may improve startup time
-                    standalone = false,
-
-                    settings = {
-                        ["rust-analyzer"] = {
-                            assist = {
-                                importPrefix = "by_self",
-                            },
-                            cargo = {
-                                allFeatures = true,
-                            },
-                            checkOnSave = {
-                                command = "clippy",
-                            },
-                            lens = {
-                                references = true,
-                                methodReferences = true,
-                            },
-                        },
-                    },
-                },
-
-                -- debugging stuff
-                dap = {
-                    adapter = {
-                        type = "executable",
-                        command = "lldb-vscode",
-                        name = "rt_lldb",
-                    },
-                },
-            })
-        end,
-        ["ltex"] = function()
-            require("lspconfig")["ltex"].setup({
-                capabilities = capabilities,
-                on_attach = function(client)
-                    require("ltex_extra").setup({
-                        load_langs = { "en-US", "de-DE" },
-                        init_check = true,
-                        path = vim.fn.stdpath("data") .. "/dictionary",
-                    })
-                    on_attach(client)
-                end,
-
-                settings = {
-                    ltex = {},
-                },
-            })
-        end,
-        ["clangd"] = function()
-            require("lspconfig")["clangd"].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-
-                cmd = {
-                    "clangd",
-                    "--background-index",
-                    "--suggest-missing-includes",
-                    "--clang-tidy",
-                    "--header-insertion=iwyu",
-                },
-                -- Required for lsp-status
-                init_options = {
-                    clangdFileStatus = true,
-                },
-            })
-        end,
-        ["pyright"] = function()
-            require("lspconfig")["pyright"].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                settings = {
-                    python = {
-                        pythonPath = vim.fn.exepath("python3.11"),
-                    },
-                },
-            })
-        end,
-        ["lua_ls"] = function()
-            require("lspconfig")["lua_ls"].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        runtime = {
-                            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                            version = "LuaJIT",
-                        },
-                        diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            globals = { "vim" },
-                        },
-                        workspace = {
-                            -- Make the server aware of Neovim runtime files
-                            library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false,
-                        },
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                            enable = false,
-                        },
-                    },
-                },
-            })
-        end,
+    settings = {
+        ltex = {},
     },
 })
+
+lspconfig.clangd.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--suggest-missing-includes",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+    },
+    -- Required for lsp-status
+    init_options = {
+        clangdFileStatus = true,
+    },
+})
+
+lspconfig.pyright.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        python = {
+            pythonPath = vim.fn.exepath("python3.11"),
+        },
+    },
+})
+
+lspconfig.lua_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { "vim" },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+})
+
+-- require("mason-lspconfig").setup({
+--     handlers = {
+--         -- The first entry (without a key) will be the default handler
+--         -- and will be called for each installed server that doesn't have
+--         -- a dedicated handler.
+--         function(server_name) -- default handler (optional)
+--             require("lspconfig")[server_name].setup({
+--                 on_attach = on_attach,
+--                 capabilities = capabilities,
+--             })
+--         end,
+--         -- Next, you can provide a dedicated handler for specific servers.
+--         -- For example, a handler override for the `rust_analyzer`:
+--         -- NOTE: for some reason this does not work, which is why I have rust things still externally.
+--         --       I'll deal with that later.
+--         ["rust_analyzer"] = function()
+--             require("rust-tools").setup({
+--                 -- https://github.com/simrat39/rust-tools.nvim
+--                 tools = {
+--                     -- whether to show hover actions inside the hover window
+--                     -- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
+--                     -- default: true
+--                     autoSetHints = true,
+--                     runnables = {
+--                         use_telescope = true,
+--                     },
+--                     inlay_hints = {
+--
+--                         chainingHints = true,
+--                         maxLength = 40,
+--                         parameterHints = true,
+--                         typeHints = true,
+--
+--                         only_current_line = false,
+--                         show_parameter_hints = true,
+--                         parameter_hints_prefix = "> ",
+--                         -- parameter_hints_prefix = "<- ",
+--
+--                         -- TODO this is not a valid argument it appears
+--                         -- other_hints_prefix "> ",
+--                         max_len_align = false,
+--                         right_align = false,
+--                         highlight = "Comment",
+--                     },
+--                 },
+--
+--                 -- options same as lsp hover / vim.lsp.util.open_floating_preview()
+--                 hover_actions = {
+--                     -- the border that is used for the hover window
+--                     -- see vim.api.nvim_open_win()
+--                     border = {
+--                         { "╭", "FloatBorder" },
+--                         { "─", "FloatBorder" },
+--                         { "╮", "FloatBorder" },
+--                         { "│", "FloatBorder" },
+--                         { "╯", "FloatBorder" },
+--                         { "─", "FloatBorder" },
+--                         { "╰", "FloatBorder" },
+--                         { "│", "FloatBorder" },
+--                     },
+--
+--                     -- whether the hover action window gets automatically focused
+--                     -- default: false
+--                     auto_focus = false,
+--                 },
+--
+--                 server = {
+--                     capabilities = capabilities,
+--                     on_attach = on_attach,
+--
+--                     -- standalone file support
+--                     -- setting it to false may improve startup time
+--                     standalone = false,
+--
+--                     settings = {
+--                         ["rust-analyzer"] = {
+--                             assist = {
+--                                 importPrefix = "by_self",
+--                             },
+--                             cargo = {
+--                                 allFeatures = true,
+--                             },
+--                             checkOnSave = {
+--                                 command = "clippy",
+--                             },
+--                             lens = {
+--                                 references = true,
+--                                 methodReferences = true,
+--                             },
+--                         },
+--                     },
+--                 },
+--
+--                 -- debugging stuff
+--                 dap = {
+--                     adapter = {
+--                         type = "executable",
+--                         command = "lldb-vscode",
+--                         name = "rt_lldb",
+--                     },
+--                 },
+--             })
+--         end,
+--         ["ltex"] = function()
+--             require("lspconfig")["ltex"].setup({
+--                 capabilities = capabilities,
+--                 on_attach = function(client)
+--                     require("ltex_extra").setup({
+--                         load_langs = { "en-US", "de-DE" },
+--                         init_check = true,
+--                         path = vim.fn.stdpath("data") .. "/dictionary",
+--                     })
+--                     on_attach(client)
+--                 end,
+--
+--                 settings = {
+--                     ltex = {},
+--                 },
+--             })
+--         end,
+--         ["clangd"] = function()
+--             require("lspconfig")["clangd"].setup({
+--                 on_attach = on_attach,
+--                 capabilities = capabilities,
+--
+--                 cmd = {
+--                     "clangd",
+--                     "--background-index",
+--                     "--suggest-missing-includes",
+--                     "--clang-tidy",
+--                     "--header-insertion=iwyu",
+--                 },
+--                 -- Required for lsp-status
+--                 init_options = {
+--                     clangdFileStatus = true,
+--                 },
+--             })
+--         end,
+--         ["pyright"] = function()
+--             require("lspconfig")["pyright"].setup({
+--                 on_attach = on_attach,
+--                 capabilities = capabilities,
+--                 settings = {
+--                     python = {
+--                         pythonPath = vim.fn.exepath("python3.11"),
+--                     },
+--                 },
+--             })
+--         end,
+--         ["lua_ls"] = function()
+--             require("lspconfig")["lua_ls"].setup({
+--                 on_attach = on_attach,
+--                 capabilities = capabilities,
+--                 settings = {
+--                     Lua = {
+--                         runtime = {
+--                             -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--                             version = "LuaJIT",
+--                         },
+--                         diagnostics = {
+--                             -- Get the language server to recognize the `vim` global
+--                             globals = { "vim" },
+--                         },
+--                         workspace = {
+--                             -- Make the server aware of Neovim runtime files
+--                             library = vim.api.nvim_get_runtime_file("", true),
+--                             checkThirdParty = false,
+--                         },
+--                         -- Do not send telemetry data containing a randomized but unique identifier
+--                         telemetry = {
+--                             enable = false,
+--                         },
+--                     },
+--                 },
+--             })
+--         end,
+--     },
+-- })
 
 require("rust-tools").setup({
 

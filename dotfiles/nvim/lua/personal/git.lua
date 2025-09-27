@@ -4,6 +4,7 @@ return {
         -- Make Git integration prettier
         "mhinz/vim-signify",
     },
+    lazy = false,
     keys = {
         { "<leader>gd", "<cmd>Gdiffsplit<cr>", mode = { "n" }, desc = "Open `git diff` in split window" },
         { "<leader>gb", "<cmd>Git blame<cr>", mode = { "n" }, desc = "Open `git blame` in a small split window" },

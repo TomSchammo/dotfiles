@@ -123,6 +123,25 @@ lspconfig.lua_ls.setup({
     },
 })
 
+lspconfig.hdl_checker.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "v", "verilog", "vhdl", "systemverilog" },
+    cmd = {
+        "hdl_checker",
+        "--lsp",
+    },
+    root_dir = function(fname)
+        -- will look for the .hdl_checker.config file in parent directory, a
+        -- .git directory, or else use the current directory, in that order.
+        local util = require("lspconfig").util
+        return util.root_pattern(".hdl_checker.config")(fname)
+            or util.find_git_ancestor(fname)
+            or util.path.dirname(fname)
+    end,
+    settings = {},
+})
+
 -- require("mason-lspconfig").setup({
 --     handlers = {
 --         -- The first entry (without a key) will be the default handler

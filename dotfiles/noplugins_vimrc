@@ -139,4 +139,4 @@ xnoremap <expr> $ g:visual_nav_enabled ? 'g$' : '$'
 
 autocmd VimEnter * if g:visual_nav_enabled | set wrap linebreak | endif
 
-autocmd FileType markdown,tex let visual_nav_enabled = 1
+autocmd FileType markdown,tex,text let visual_nav_enabled = 1

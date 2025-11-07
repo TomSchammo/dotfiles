@@ -32,6 +32,9 @@ set nu
 " displays line numbers relative to the current one
 set relativenumber
 
+" no wrap to next line by default
+set nowrap
+
 " turn search highliting off
 set nohlsearch
 

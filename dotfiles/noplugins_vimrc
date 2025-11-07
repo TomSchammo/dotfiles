@@ -109,7 +109,7 @@ nnoremap <C-p> :Lexplore<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Toggle variable
-let g:visual_nav_enabled = 1
+let g:visual_nav_enabled = 0
 
 function! ToggleVisualNav()
   if g:visual_nav_enabled
@@ -131,12 +131,12 @@ nnoremap <expr> k g:visual_nav_enabled ? 'gk' . (v:count > 1 ? v:count-1 : '') :
 nnoremap <expr> 0 g:visual_nav_enabled ? 'g0' : '0'
 nnoremap <expr> $ g:visual_nav_enabled ? 'g$' : '$'
 
-" Visual mode movement (operator-pending)
+" Visual mode movement
 xnoremap <expr> j g:visual_nav_enabled ? 'gj' : 'j'
 xnoremap <expr> k g:visual_nav_enabled ? 'gk' : 'k'
 xnoremap <expr> 0 g:visual_nav_enabled ? 'g0' : '0'
 xnoremap <expr> $ g:visual_nav_enabled ? 'g$' : '$'
 
+autocmd VimEnter * if g:visual_nav_enabled | set wrap linebreak | endif
 
-autocmd FileType markdown,tex let g:visual_nav_enabled = 1
-
+autocmd FileType markdown,tex let visual_nav_enabled = 1

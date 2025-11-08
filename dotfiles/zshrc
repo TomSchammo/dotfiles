@@ -79,6 +79,8 @@ alias python3='python3.11'
 
 alias mp='multipass'
 
+alias libopencv='pkg-config --cflags --libs opencv4'
+
 
 # Exports
 # export PATH="$HOME/.scripts:/usr/local/bin:$PATH"

@@ -90,9 +90,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export BACKGROUND='/home/tom/Pictures/Wallpapers/city_pixelart.png'
 export LTEX_GLOBAL_STORAGE_PATH="$XDG_CONFIG_HOME/nvim/ltex-settings"
 
-export CPATH="/opt/homebrew/opt/libomp/include:/opt/homebrew/Cellar/boost/1.87.0/include:$CPATH"
-export LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.87.0/lib:$LIBRARY_PATH"
-export LD_LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.87.0/lib:$LD_LIBRARY_PATH"
+export CPATH="/opt/homebrew:/opt/homebrew/Cellar/boost/1.89.0/include:/opt/homebrew/Cellar/libpng/1.6.50/include:/opt/homebrew/Cellar/jpeg-turbo/3.1.1/include/:/Users/tom/Projects/STM32CubeL4/Drivers/CMSIS/Device/ST/STM32L4xx/Include:/Users/tom/Projects/STM32CubeL4/Drivers/CMSIS/Core/Include/:/Users/tom/Projects/STM32CubeL4/Drivers/STM32L4xx_HAL_Driver/Inc/:$CPATH"
+export LIBRARY_PATH="/opt/homebrew:/opt/homebrew/Cellar/boost/1.89.0/lib:$LIBRARY_PATH"
+export LD_LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.89.0/lib:$LD_LIBRARY_PATH"
 
 export TORCH_PATH="/opt/homebrew/lib/python3.11/site-packages/torch/share/cmake"
 
@@ -147,3 +147,6 @@ export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/libomp/19.1.6/lib/:/opt/homebrew/l
 
 export FZF_DEFAULT_OPTS=""
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export OPENSSL_ROOT_DIR=/opt/homebrew/opt/openssl@3
+
+export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin

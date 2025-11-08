@@ -2,9 +2,6 @@
 # setopt nobeep
 # setopt correct
 
-alias gcc="/opt/homebrew/Cellar/gcc/15.1.0/bin/gcc-15"
-alias g++="/opt/homebrew/Cellar/gcc/15.1.0/bin/g++-15"
-
 # Variables for Make
 # export CC="gcc"
 export CFLAGS=""
@@ -87,12 +84,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export BACKGROUND='/home/tom/Pictures/Wallpapers/city_pixelart.png'
 export LTEX_GLOBAL_STORAGE_PATH="$XDG_CONFIG_HOME/nvim/ltex-settings"
 
-export CPATH="/opt/homebrew/opt/libomp/include:/opt/homebrew/Cellar/boost/1.87.0/include:$CPATH"
-export LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.87.0/lib:$LIBRARY_PATH"
-export LD_LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:/opt/homebrew/Cellar/boost/1.87.0/lib:$LD_LIBRARY_PATH"
-
-export TORCH_PATH="/opt/homebrew/lib/python3.11/site-packages/torch/share/cmake"
-
 fpath=(~/.config/zsh/plugins/zsh-completions/src $fpath)
 fpath=(~/.config/zsh/plugins/zsh-syntax-highlighting/src $fpath)
 fpath=(~/.config/zsh/plugins/zsh-autosuggestions/src $fpath)
@@ -140,7 +131,4 @@ source ~/.exports
 # --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 # --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
-export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/libomp/19.1.6/lib/:/opt/homebrew/lib/python3.11/site-packages/torch/lib/:$DYLD_LIBRARY_PATH
-
 export FZF_DEFAULT_OPTS=""
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

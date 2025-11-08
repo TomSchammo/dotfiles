@@ -13,7 +13,7 @@ return {
                 "pyright",
                 "taplo",
                 "lua_ls",
-                "nil_ls",
+                -- "nil_ls",
             },
         })
     end,

@@ -29,32 +29,18 @@ local on_attach = function(client)
     end
 end
 
--- Configure LSP servers directly (mason-lspconfig automatically enables installed servers)
-local lspconfig = require("lspconfig")
-
 -- Default setup for servers that don't need special configuration
-lspconfig.bashls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
+local autoconfigure_ls = { "bashls", "jsonls", "marksman", "taplo" }
 
-lspconfig.jsonls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-lspconfig.marksman.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-lspconfig.taplo.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
+for _, lang_serv in ipairs(autoconfigure_ls) do
+    vim.lsp.config(lang_serv, {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    })
+end
 
 -- Specific server configurations
-lspconfig.ltex.setup({
+vim.lsp.config("ltex", {
     capabilities = capabilities,
     on_attach = function(client)
         require("ltex_extra").setup({
@@ -70,7 +56,7 @@ lspconfig.ltex.setup({
     },
 })
 
-lspconfig.clangd.setup({
+vim.lsp.config("clangd", {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
@@ -87,7 +73,7 @@ lspconfig.clangd.setup({
     },
 })
 
-lspconfig.pyright.setup({
+vim.lsp.config("pyright", {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -97,7 +83,7 @@ lspconfig.pyright.setup({
     },
 })
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -123,7 +109,7 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lspconfig.hdl_checker.setup({
+vim.lsp.config("hdl_checker", {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "v", "verilog", "vhdl", "systemverilog" },

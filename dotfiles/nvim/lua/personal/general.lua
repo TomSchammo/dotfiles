@@ -55,3 +55,51 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.h",
     command = "set filetype=c",
 })
+
+vim.cmd([[
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LineWrapping
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Toggle variable
+let g:visual_nav_enabled = 0
+
+function! ToggleVisualNav()
+  if g:visual_nav_enabled
+    let g:visual_nav_enabled = 0
+    set nowrap
+    set nolinebreak
+    echo "Visual-line navigation DISABLED"
+  else
+    let g:visual_nav_enabled = 1
+    set wrap
+    set linebreak
+    echo "Visual-line navigation ENABLED"
+  endif
+endfunction
+
+" Normal mode movement
+nnoremap <expr> j g:visual_nav_enabled ? 'gj' . (v:count > 1 ? v:count-1 : '') : 'j'
+nnoremap <expr> k g:visual_nav_enabled ? 'gk' . (v:count > 1 ? v:count-1 : '') : 'k'
+nnoremap <expr> 0 g:visual_nav_enabled ? 'g0' : '0'
+nnoremap <expr> $ g:visual_nav_enabled ? 'g$' : '$'
+
+" Visual mode movement
+xnoremap <expr> j g:visual_nav_enabled ? 'gj' : 'j'
+xnoremap <expr> k g:visual_nav_enabled ? 'gk' : 'k'
+xnoremap <expr> 0 g:visual_nav_enabled ? 'g0' : '0'
+xnoremap <expr> $ g:visual_nav_enabled ? 'g$' : '$'
+
+autocmd VimEnter * if g:visual_nav_enabled | set wrap linebreak | endif
+
+autocmd FileType markdown,tex,text let visual_nav_enabled = 1
+
+" Set initial empty buffer to filetype text
+" TODO: fix this
+" augroup InitialEmptyBuffer
+"   autocmd!
+"   autocmd VimEnter * if expand('%') == '' && line('$') == 1 && getline(1) == '' | setfiletype text | endif
+" augroup END
+
+]])

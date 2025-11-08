@@ -29,32 +29,18 @@ local on_attach = function(client)
     end
 end
 
--- Configure LSP servers directly (mason-lspconfig automatically enables installed servers)
-local lspconfig = require("lspconfig")
-
 -- Default setup for servers that don't need special configuration
-lspconfig.bashls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
+local autoconfigure_ls = { "bashls", "jsonls", "marksman", "taplo" }
 
-lspconfig.jsonls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-lspconfig.marksman.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-lspconfig.taplo.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
+for _, lang_serv in ipairs(autoconfigure_ls) do
+    vim.lsp.config(lang_serv, {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    })
+end
 
 -- Specific server configurations
-lspconfig.ltex.setup({
+vim.lsp.config("ltex", {
     capabilities = capabilities,
     on_attach = function(client)
         require("ltex_extra").setup({
@@ -70,7 +56,7 @@ lspconfig.ltex.setup({
     },
 })
 
-lspconfig.clangd.setup({
+vim.lsp.config("clangd", {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
@@ -87,7 +73,7 @@ lspconfig.clangd.setup({
     },
 })
 
-lspconfig.pyright.setup({
+vim.lsp.config("pyright", {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -97,7 +83,7 @@ lspconfig.pyright.setup({
     },
 })
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -123,7 +109,7 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lspconfig.hdl_checker.setup({
+vim.lsp.config("hdl_checker", {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "v", "verilog", "vhdl", "systemverilog" },
@@ -142,93 +128,93 @@ lspconfig.hdl_checker.setup({
     settings = {},
 })
 
-require("rust-tools").setup({
+-- require("rust-tools").setup({
 
-    -- https://github.com/simrat39/rust-tools.nvim
-    tools = {
-        -- whether to show hover actions inside the hover window
-        -- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
-        -- default: true
-        autoSetHints = true,
-        runnables = {
-            use_telescope = true,
-        },
-        inlay_hints = {
+--     -- https://github.com/simrat39/rust-tools.nvim
+--     tools = {
+--         -- whether to show hover actions inside the hover window
+--         -- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
+--         -- default: true
+--         autoSetHints = true,
+--         runnables = {
+--             use_telescope = true,
+--         },
+--         inlay_hints = {
 
-            chainingHints = true,
-            maxLength = 40,
-            parameterHints = true,
-            typeHints = true,
+--             chainingHints = true,
+--             maxLength = 40,
+--             parameterHints = true,
+--             typeHints = true,
 
-            only_current_line = false,
-            show_parameter_hints = true,
-            parameter_hints_prefix = "> ",
-            -- parameter_hints_prefix = "<- ",
+--             only_current_line = false,
+--             show_parameter_hints = true,
+--             parameter_hints_prefix = "> ",
+--             -- parameter_hints_prefix = "<- ",
 
-            -- TODO this is not a valid argument it appears
-            -- other_hints_prefix "> ",
-            max_len_align = false,
-            right_align = false,
-            highlight = "Comment",
-        },
-    },
+--             -- TODO this is not a valid argument it appears
+--             -- other_hints_prefix "> ",
+--             max_len_align = false,
+--             right_align = false,
+--             highlight = "Comment",
+--         },
+--     },
 
-    -- options same as lsp hover / vim.lsp.util.open_floating_preview()
-    hover_actions = {
-        -- the border that is used for the hover window
-        -- see vim.api.nvim_open_win()
-        border = {
-            { "╭", "FloatBorder" },
-            { "─", "FloatBorder" },
-            { "╮", "FloatBorder" },
-            { "│", "FloatBorder" },
-            { "╯", "FloatBorder" },
-            { "─", "FloatBorder" },
-            { "╰", "FloatBorder" },
-            { "│", "FloatBorder" },
-        },
+--     -- options same as lsp hover / vim.lsp.util.open_floating_preview()
+--     hover_actions = {
+--         -- the border that is used for the hover window
+--         -- see vim.api.nvim_open_win()
+--         border = {
+--             { "╭", "FloatBorder" },
+--             { "─", "FloatBorder" },
+--             { "╮", "FloatBorder" },
+--             { "│", "FloatBorder" },
+--             { "╯", "FloatBorder" },
+--             { "─", "FloatBorder" },
+--             { "╰", "FloatBorder" },
+--             { "│", "FloatBorder" },
+--         },
 
-        -- whether the hover action window gets automatically focused
-        -- default: false
-        auto_focus = false,
-    },
+--         -- whether the hover action window gets automatically focused
+--         -- default: false
+--         auto_focus = false,
+--     },
 
-    server = {
-        capabilities = capabilities,
-        on_attach = on_attach,
+--     server = {
+--         capabilities = capabilities,
+--         on_attach = on_attach,
 
-        -- standalone file support
-        -- setting it to false may improve startup time
-        standalone = false,
+--         -- standalone file support
+--         -- setting it to false may improve startup time
+--         standalone = false,
 
-        settings = {
-            ["rust-analyzer"] = {
-                assist = {
-                    importPrefix = "by_self",
-                },
-                cargo = {
-                    allFeatures = true,
-                },
-                checkOnSave = {
-                    command = "clippy",
-                },
-                lens = {
-                    references = true,
-                    methodReferences = true,
-                },
-            },
-        },
-    },
+--         settings = {
+--             ["rust-analyzer"] = {
+--                 assist = {
+--                     importPrefix = "by_self",
+--                 },
+--                 cargo = {
+--                     allFeatures = true,
+--                 },
+--                 checkOnSave = {
+--                     command = "clippy",
+--                 },
+--                 lens = {
+--                     references = true,
+--                     methodReferences = true,
+--                 },
+--             },
+--         },
+--     },
 
-    -- debugging stuff
-    dap = {
-        adapter = {
-            type = "executable",
-            command = "lldb-vscode",
-            name = "rt_lldb",
-        },
-    },
-})
+--     -- debugging stuff
+--     dap = {
+--         adapter = {
+--             type = "executable",
+--             command = "lldb-vscode",
+--             name = "rt_lldb",
+--         },
+--     },
+-- })
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -238,7 +224,7 @@ local luasnip = require("luasnip")
 cmp.setup({
     snippet = {
         expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = {

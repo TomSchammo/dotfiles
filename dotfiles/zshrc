@@ -74,7 +74,8 @@ alias gattach='git commit --amend --no-edit'
 
 alias upgrade-pip3-packages='pip3 install $(pip3 list | tail -n +3 | tr -s " " | cut -d " " -f 1) --upgrade'
 
-alias python='python3'
+alias python='python3.11'
+alias python3='python3.11'
 
 alias mp='multipass'
 

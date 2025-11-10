@@ -21,6 +21,7 @@ local plugins = {
 
     -- Mason
     require("personal.mason"),
+    require("personal.mason-lspconfig"),
 
     -- vim-surround
     "tpope/vim-surround",
@@ -38,6 +39,9 @@ local plugins = {
 
     require("personal.treesitter"),
     require("personal.neogen"),
+
+    -- Neovim built-in lsp
+    "neovim/nvim-lspconfig",
 
     -- Neovim built-in lsp autocompletion
     "hrsh7th/nvim-cmp",

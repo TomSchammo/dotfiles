@@ -1,0 +1,89 @@
+#!/bin/bash
+
+CXX_LIBS=("opencv4")
+
+echo "Setting up warnings and general includes..."
+
+cat << 'EOF' > .clangd
+CompileFlags:
+  Add: [
+      # warnings
+      -Wall,
+      -Wextra,
+      -Wpedantic,
+      # more warnings
+      -Wshadow,
+      -Wconversion,
+      -Wsign-conversion,
+      -Wcast-align,
+      -Wformat=2,
+      -Wundef,
+      -Wnull-dereference,
+      -Wdouble-promotion,
+      -Wlogical-op,
+      -Wmissing-include-dirs,
+      -Wfloat-equal,
+      # includes
+      -I/usr/local/include,
+EOF
+
+if [[ $(uname) == 'Darwin' ]]; then
+echo "Detected macOS, adding macos specific stuff"
+cat << 'EOF' >> .clangd
+      -I/opt/homebrew/include,
+      -I/opt/homebrew/opt/libpng/include/libpng16,
+      -I/opt/homebrew/opt/jpeg-turbo/include,
+      -I/Users/tom/Projects/STM32CubeL4/Drivers/CMSIS/Device/ST/STM32L4xx/Include,
+      -I/Users/tom/Projects/STM32CubeL4/Drivers/CMSIS/Core/Include,
+      -I/Users/tom/Projects/STM32CubeL4/Drivers/STM32L4xx_HAL_Driver/Inc,
+      -Xpreprocessor,
+      -fopenmp,
+      -lomp,
+      -target,
+      arm64-apple-macos,
+EOF
+fi
+
+echo "    ]" >> .clangd
+
+echo "Adding C++ specific stuff.."
+cat << 'EOF' >> .clangd
+---
+# Fragment specific to C++ source files
+If:
+  PathMatch: [.*\.cpp, .*\.hpp]
+CompileFlags:
+  Add: [
+      -std=c++23,
+      # C++ specifc warnigns
+      -Wold-style-cast,
+      -Woverloaded-virtual,
+      -Wnon-virtual-dtor,
+      -Wzero-as-null-pointer-constant,
+      # Lib includes
+EOF
+
+for lib in "${CXX_LIBS[@]}"; do
+    FLAGS=$(pkg-config --cflags $lib)
+    for flag in $FLAGS; do
+        echo "      $flag" >> .clangd
+    done
+done
+echo "    ]" >> .clangd
+
+echo "Adding C specific stuff.."
+cat << 'EOF' >> .clangd
+---
+If:
+  PathMatch: [.*\.c, .*\.h]
+CompileFlags:
+  Add: [
+      -std=c23,
+      -x,
+      c,
+      # C-specific warnings
+      -Wstrict-prototypes,
+      -Wmissing-prototypes,
+      -Wold-style-definition,
+    ]
+EOF

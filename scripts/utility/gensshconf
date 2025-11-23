@@ -1,0 +1,21 @@
+#!/bin/bash
+
+date=$(date)
+count=$(grep -v '^\s*#' ~/.hosts.csv | grep -v '^\s*$' | wc -l)
+path=~/.ssh/generated_hosts
+
+printf "### Generated on %s for %d SSH hosts\n\n" "$date" "$count" > "$path"
+
+printf 'Reading hosts.csv...\n\n'
+
+while IFS=, read -r user host ip; do
+    # Skip lines starting with #
+    [[ $host =~ ^\s*# ]] && continue
+    # Skip if any required field is missing
+    [[ -z $user || -z $host || -z $ip ]] && continue
+
+    printf "Host %s\n  Hostname %s\n  User %s\n\n" \
+        "$host" "$ip" "$user" >> "$path"
+done < ~/.hosts.csv
+
+echo "Configuration has been generated."

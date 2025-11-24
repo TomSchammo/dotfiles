@@ -13,6 +13,3 @@
 [submodule "dotfiles/zsh/plugins/web-search"]
 	path = dotfiles/zsh/plugins/web-search
 	url = https://github.com/TomSchammo/web-search
-[submodule "dotfiles/nvim/custom-snippets"]
-	path = dotfiles/nvim/custom-snippets
-	url = https://github.com/TomSchammo/custom-snippets

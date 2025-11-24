@@ -16,5 +16,5 @@ vim.keymap.set("n", "<C-Up>", "<cmd>resize +3<CR>", { noremap = true, silent = t
 vim.keymap.set("n", "<C-Down>", "<cmd>resize -3<CR>", { noremap = true, silent = true })
 
 -- Change 2 split windows from vert to horiz or horiz to vert
-vim.keymap.set("", "<leader>h", "<C-w>t<C-w>H")
-vim.keymap.set("", "<leader>v", "<C-w>t<C-w>K")
+vim.keymap.set("", "<C-w>v", "<C-w>t<C-w>H")
+vim.keymap.set("", "<C-w>h", "<C-w>t<C-w>K")

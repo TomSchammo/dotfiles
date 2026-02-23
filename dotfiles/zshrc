@@ -83,6 +83,7 @@ alias libopencv='pkg-config --cflags --libs opencv4'
 # export PATH="$HOME/.scripts:/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.docker/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export BACKGROUND='/home/tom/Pictures/Wallpapers/city_pixelart.png'
 export LTEX_GLOBAL_STORAGE_PATH="$XDG_CONFIG_HOME/nvim/ltex-settings"

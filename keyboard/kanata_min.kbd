@@ -1,0 +1,59 @@
+;; Cross-Platform Kanata Configuration
+;; Works on macOS, Linux, and Windows
+;; Swiss German QWERTZ with symbol layer on right cmd (rmet)
+
+(defcfg
+  process-unmapped-keys yes
+  windows-altgr cancel-lctl-press
+)
+
+;; Keys that kanata will process
+;; scln = ö key position (semicolon on US layouts)
+;; rmet = right cmd (used as symbol layer toggle)
+(defsrc
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
+  q w e r
+  caps a s d j k l
+  fn lalt lmet rmet
+)
+
+;; Function key layer toggle
+(defalias
+  fnl (tap-hold 200 200 fn (layer-toggle fn))
+)
+
+(defalias
+  capsback (tap-hold 120 120 bspc (layer-toggle symbols))
+)
+
+(deflayer base
+  brdn  brup  _    _    _    _   prev  pp  next  mute  vold  volu
+  q w e r
+  esc a s d j k l
+  @fnl lmet @capsback (layer-while-held symbols)
+)
+
+(deflayer fn
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
+  q w e r
+  esc a s d j k l
+  fn lalt lmet rmet
+)
+
+;; Symbol layer - hold right cmd (rmet) to activate
+;; a=( s=_ d=) f=* g=+ v=~ j=> x=; c=&
+(deflayer symbols
+  _ _ _ _ _ _ _ _ _ _ _ _
+  (unicode "_") (unicode "(") (unicode ")") (unicode "-")
+  esc (unicode "{") (unicode "_") (unicode "}") (unicode "[") (unicode "-") (unicode "]")
+  ;;  (unicode "*") (unicode "+") (unicode "<") k l scln (unicode ";") (unicode "&")  (unicode "~")
+  fn lmet _ _
+)
+
+;; Shifted symbol layer - active when holding Shift in symbols layer
+;; a={ s=- d=} f=[ g=] v=` j=< x=: c=|
+;; (deflayer symbols-shift
+;;   _ _ _ _ _ _ _ _ _ _ _ _
+;;   (unicode "{") (unicode "}")  (unicode "[") (unicode "]") (unicode ">") k l scln (unicode ":") (unicode "|") (unicode "`") _ _
+;;   fn _
+;; )

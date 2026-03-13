@@ -24,15 +24,16 @@ xkb_symbols "de_nodeadkeys" {
     key <CAPS>  { [ Escape ] };
 
     // AltGr (level 3) symbol layer — mirrors the kanata symbols layer
-    //   top row:  q→_  w→(  e→)  r→-
-    //   home row: a→{  s→_  d→}  j→[  k→-  l→]
-    key <AD01>  { [ q, Q, underscore   ] };
+    //   top row:  q→|  w→(  e→)  r→&
+    //   home row: a→{  s→_  d→}  f→~  j→[  k→-  l→]
+    key <AD01>  { [ q, Q, bar          ] };
     key <AD02>  { [ w, W, parenleft    ] };
     key <AD03>  { [ e, E, parenright   ] };
-    key <AD04>  { [ r, R, minus        ] };
+    key <AD04>  { [ r, R, ampersand    ] };
     key <AC01>  { [ a, A, braceleft    ] };
     key <AC02>  { [ s, S, underscore   ] };
     key <AC03>  { [ d, D, braceright   ] };
+    key <AC04>  { [ f, F, asciitilde   ] };
     key <AC07>  { [ j, J, bracketleft  ] };
     key <AC08>  { [ k, K, minus        ] };
     key <AC09>  { [ l, L, bracketright ] };

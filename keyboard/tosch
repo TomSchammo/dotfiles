@@ -1,18 +1,48 @@
 // Custom keyboard layout based on the Swiss-German (no dead keys).
-// It makes `/` more acessible by replacing it with `¨`, which is very handy for programming and working on a computer in general.
+// It makes `/` more accessible by replacing it with `¨`, which is very handy
+// for programming and working on a computer in general.
+//
+// NOTE: Fn ↔ Ctrl swap is NOT possible via XKB. Fn is intercepted at firmware
+// level before the OS sees it. Check your laptop's BIOS/UEFI for a "Fn Lock"
+// or "Swap Fn and Ctrl" option (common on ThinkPads and some others).
 
-
-default partial alphanumeric_keys
-partial alphanumeric_keys
+default partial alphanumeric_keys modifier_keys
 xkb_symbols "de_nodeadkeys" {
 
     include "ch(basic)"
 
     name[Group1]= "Custom (German-Switzerland, no dead keys)";
 
-    key <AE07>	{[          7,      diaeresis,          bar             ]};
-    key <AB10>	{[      minus, underscore                           ]};
-    key <AE11>	{[  apostrophe,  question,        acute ]};
-    key <AE12>	{[ asciicircum,     grave,   asciitilde ]};
-    key <AD12>	{[   slash,    exclam, bracketright ]};
+    // Original customisations
+    key <AE07>  { [          7,      diaeresis,          bar ] };
+    key <AB10>  { [      minus,     underscore               ] };
+    key <AE11>  { [ apostrophe,       question,        acute ] };
+    key <AE12>  { [asciicircum,          grave,   asciitilde ] };
+    key <AD12>  { [      slash,         exclam, bracketright ] };
+
+    // Caps Lock → Escape
+    key <CAPS>  { [ Escape ] };
+
+    // AltGr (level 3) symbol layer — mirrors the kanata symbols layer
+    //   top row:  q→_  w→(  e→)  r→-
+    //   home row: a→{  s→_  d→}  j→[  k→-  l→]
+    key <AD01>  { [ q, Q, underscore   ] };
+    key <AD02>  { [ w, W, parenleft    ] };
+    key <AD03>  { [ e, E, parenright   ] };
+    key <AD04>  { [ r, R, minus        ] };
+    key <AC01>  { [ a, A, braceleft    ] };
+    key <AC02>  { [ s, S, underscore   ] };
+    key <AC03>  { [ d, D, braceright   ] };
+    key <AC07>  { [ j, J, bracketleft  ] };
+    key <AC08>  { [ k, K, minus        ] };
+    key <AC09>  { [ l, L, bracketright ] };
+
+    // Win/Meta key → Left Alt  (moves Alt one position left)
+    // Note: ch(basic) puts <LWIN> in Mod4 (Super); adding it to Mod1 here
+    // means the key will activate both. Rarely causes issues in practice.
+    key <LWIN>  { [ Alt_L, Meta_L ] };
+    modifier_map Mod1 { <LWIN> };
+
+    // Left Alt key → Backspace
+    key <LALT>  { [ BackSpace ] };
 };

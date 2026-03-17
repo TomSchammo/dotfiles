@@ -13,7 +13,8 @@
 (defsrc
   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
   q w e r
-  caps a s d j k l
+  caps a s d f j k l
+  z x c
   fn lalt lmet rmet
 )
 
@@ -29,14 +30,16 @@
 (deflayer base
   brdn  brup  _    _    _    _   prev  pp  next  mute  vold  volu
   q w e r
-  esc a s d j k l
+  esc a s d f j k l
+  z x c
   @fnl lmet @capsback (layer-while-held symbols)
 )
 
 (deflayer fn
   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
   q w e r
-  esc a s d j k l
+  esc a s d f j k l
+  z x c
   fn lalt lmet rmet
 )
 
@@ -44,9 +47,10 @@
 ;; a=( s=_ d=) f=* g=+ v=~ j=> x=; c=&
 (deflayer symbols
   _ _ _ _ _ _ _ _ _ _ _ _
-  (unicode "_") (unicode "(") (unicode ")") (unicode "-")
-  esc (unicode "{") (unicode "_") (unicode "}") (unicode "[") (unicode "-") (unicode "]")
+  (unicode "|") (unicode "(") (unicode ")") (unicode "&")
+  esc (unicode "{") (unicode "_") (unicode "}") (unicode "~") (unicode "[") (unicode "-") (unicode "]")
   ;;  (unicode "*") (unicode "+") (unicode "<") k l scln (unicode ";") (unicode "&")  (unicode "~")
+  (unicode "<") (unicode "\") (unicode ">")
   fn lmet _ _
 )
 
@@ -57,3 +61,4 @@
 ;;   (unicode "{") (unicode "}")  (unicode "[") (unicode "]") (unicode ">") k l scln (unicode ":") (unicode "|") (unicode "`") _ _
 ;;   fn _
 ;; )
+

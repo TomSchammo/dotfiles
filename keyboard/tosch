@@ -26,6 +26,7 @@ xkb_symbols "de_nodeadkeys" {
     // AltGr (level 3) symbol layer — mirrors the kanata symbols layer
     //   top row:  q→|  w→(  e→)  r→&
     //   home row: a→{  s→_  d→}  f→~  j→[  k→-  l→]
+    //   bottom row: z→<  x→\  c→>
     key <AD01>  { [ q, Q, bar          ] };
     key <AD02>  { [ w, W, parenleft    ] };
     key <AD03>  { [ e, E, parenright   ] };
@@ -37,6 +38,9 @@ xkb_symbols "de_nodeadkeys" {
     key <AC07>  { [ j, J, bracketleft  ] };
     key <AC08>  { [ k, K, minus        ] };
     key <AC09>  { [ l, L, bracketright ] };
+    key <AB05>  { [ z, Z, less          ] };
+    key <AB06>  { [ x, X, backslash     ] };
+    key <AB07>  { [ c, C, greater       ] };
 
     // Win/Meta key → Left Alt  (moves Alt one position left)
     // Note: ch(basic) puts <LWIN> in Mod4 (Super); adding it to Mod1 here

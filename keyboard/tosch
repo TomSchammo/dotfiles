@@ -21,7 +21,13 @@ xkb_symbols "de_nodeadkeys" {
     key <AD12>  { [      slash,         exclam, bracketright ] };
 
     // Caps Lock → Escape
-    key <CAPS>  { [ Escape ] };
+    // key <CAPS>  { [ Escape ] };
+    // Caps Lock → Escape (no lock behavior)
+    replace key <CAPS> {
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ Escape ]
+    };
+    modifier_map none { <CAPS> };
 
     // AltGr (level 3) symbol layer — mirrors the kanata symbols layer
     //   top row:  q→|  w→(  e→)  r→&

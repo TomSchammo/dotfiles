@@ -1,10 +1,14 @@
-// Custom keyboard layout based on the Swiss-German (no dead keys).
-// It makes `/` more accessible by replacing it with `¨`, which is very handy
-// for programming and working on a computer in general.
+// Custom keyboard layout based on Swiss-German (no dead keys).
+//
+// Base layer: ch(basic) with modifications
+// L1 layer:   AltGr (level 3) acts as symbol layer
 //
 // NOTE: Fn ↔ Ctrl swap is NOT possible via XKB. Fn is intercepted at firmware
 // level before the OS sees it. Check your laptop's BIOS/UEFI for a "Fn Lock"
 // or "Swap Fn and Ctrl" option (common on ThinkPads and some others).
+//
+// NOTE: This layout targets US ANSI physical keyboards. The ISO extra key
+// (<AB00>) is not used. Backslash is on AltGr+Caps instead.
 
 default partial alphanumeric_keys modifier_keys
 xkb_symbols "de_nodeadkeys" {
@@ -13,47 +17,94 @@ xkb_symbols "de_nodeadkeys" {
 
     name[Group1]= "Custom (German-Switzerland, no dead keys)";
 
-    // Original customisations
-    key <AE07>  { [          7,      diaeresis,          bar ] };
-    key <AB10>  { [      minus,     underscore               ] };
-    key <AE11>  { [ apostrophe,       question,        acute ] };
-    key <AE12>  { [asciicircum,          grave,   asciitilde ] };
-    key <AD12>  { [      slash,         exclam, bracketright ] };
-
-    // Caps Lock → Escape
-    // key <CAPS>  { [ Escape ] };
-    // Caps Lock → Escape (no lock behavior)
+    // -------------------------------------------------------------------------
+    // Caps Lock → Escape (all levels, no caps lock behaviour)
+    // AltGr+Caps → backslash (replaces ISO extra key absent on ANSI)
+    // -------------------------------------------------------------------------
     replace key <CAPS> {
-        type[Group1] = "ONE_LEVEL",
-        symbols[Group1] = [ Escape ]
+        type[Group1] = "FOUR_LEVEL",
+        symbols[Group1] = [ Escape, NoSymbol, backslash, NoSymbol ]
     };
     modifier_map none { <CAPS> };
 
-    // AltGr (level 3) symbol layer — mirrors the kanata symbols layer
-    //   top row:  q→|  w→(  e→)  r→&
-    //   home row: a→{  s→_  d→}  f→~  j→[  k→-  l→]
-    //   bottom row: z→<  x→\  c→>
-    key <AD01>  { [ q, Q, bar          ] };
-    key <AD02>  { [ w, W, parenleft    ] };
-    key <AD03>  { [ e, E, parenright   ] };
-    key <AD04>  { [ r, R, ampersand    ] };
-    key <AC01>  { [ a, A, braceleft    ] };
-    key <AC02>  { [ s, S, underscore   ] };
-    key <AC03>  { [ d, D, braceright   ] };
-    key <AC04>  { [ f, F, asciitilde   ] };
-    key <AC07>  { [ j, J, bracketleft  ] };
-    key <AC08>  { [ k, K, minus        ] };
-    key <AC09>  { [ l, L, bracketright ] };
-    key <AB05>  { [ z, Z, less          ] };
-    key <AB06>  { [ x, X, backslash     ] };
-    key <AB07>  { [ c, C, greater       ] };
-
-    // Win/Meta key → Left Alt  (moves Alt one position left)
-    // Note: ch(basic) puts <LWIN> in Mod4 (Super); adding it to Mod1 here
-    // means the key will activate both. Rarely causes issues in practice.
+    // -------------------------------------------------------------------------
+    // Win/Meta → Left Alt
+    // -------------------------------------------------------------------------
     key <LWIN>  { [ Alt_L, Meta_L ] };
     modifier_map Mod1 { <LWIN> };
 
-    // Left Alt key → Backspace
+    // -------------------------------------------------------------------------
+    // Left Alt → Backspace
+    // -------------------------------------------------------------------------
     key <LALT>  { [ BackSpace ] };
+
+    // -------------------------------------------------------------------------
+    // Base layer tweaks (carried over from previous version)
+    // -------------------------------------------------------------------------
+    key <AE07>  { [          7,      diaeresis,          bar ] };
+    key <AB10>  { [      minus,     underscore               ] };
+    key <AE11>  { [ apostrophe,       question,        acute ] };
+    key <AE12>  { [ asciicircum,        grave,   asciitilde  ] };
+
+    // / → level2: ! → level3: $
+    key <AD12>  { [ slash, exclam, dollar ] };
+
+    // -------------------------------------------------------------------------
+    // L1 left half — number row (AltGr = level 3)
+    // -------------------------------------------------------------------------
+    key <AE01>  { [ 1, exclam,    exclam      ] };  // L1: !
+    key <AE02>  { [ 2, at,        at          ] };  // L1: @
+    key <AE03>  { [ 3, numbersign, numbersign ] };  // L1: #
+    key <AE04>  { [ 4, dollar,    question    ] };  // L1: ?
+    key <AE05>  { [ 5, percent,   percent     ] };  // L1: %
+
+    // -------------------------------------------------------------------------
+    // L1 left half — top row QWERT
+    // -------------------------------------------------------------------------
+    key <AD01>  { [ q, Q, bar          ] };  // L1: |
+    key <AD02>  { [ w, W, parenleft    ] };  // L1: (
+    key <AD03>  { [ e, E, parenright   ] };  // L1: )
+    key <AD04>  { [ r, R, ampersand    ] };  // L1: &
+    key <AD05>  { [ t, T, comma        ] };  // L1: ,
+
+    // -------------------------------------------------------------------------
+    // L1 left half — home row ASDFG
+    // -------------------------------------------------------------------------
+    key <AC01>  { [ a, A, braceleft    ] };  // L1: {
+    key <AC02>  { [ s, S, underscore   ] };  // L1: _
+    key <AC03>  { [ d, D, braceright   ] };  // L1: }
+    key <AC04>  { [ f, F, asciitilde   ] };  // L1: ~
+    key <AC05>  { [ g, G, period       ] };  // L1: .
+
+    // -------------------------------------------------------------------------
+    // L1 left half — bottom row YXCV
+    // -------------------------------------------------------------------------
+    key <AB01>  { [ y, Y, plus         ] };  // L1: +
+    key <AB02>  { [ x, X, asterisk     ] };  // L1: * (left hand)
+    key <AB03>  { [ c, C, semicolon    ] };  // L1: ;
+    key <AB04>  { [ v, V, less         ] };  // L1:
+
+    // -------------------------------------------------------------------------
+    // L1 right half — top row ZUIOP
+    // -------------------------------------------------------------------------
+    key <AD07>  { [ u, U, grave        ] };  // L1: `
+    key <AD08>  { [ i, I, apostrophe   ] };  // L1: '
+    key <AD09>  { [ o, O, quotedbl     ] };  // L1: "
+    key <AD10>  { [ p, P, dollar       ] };  // L1: $
+
+    // -------------------------------------------------------------------------
+    // L1 right half — home row HJKL
+    // -------------------------------------------------------------------------
+    key <AC06>  { [ h, H, equal        ] };  // L1: =
+    key <AC07>  { [ j, J, bracketleft  ] };  // L1: [
+    key <AC08>  { [ k, K, minus        ] };  // L1: -
+    key <AC09>  { [ l, L, bracketright ] };  // L1: ]
+
+    // -------------------------------------------------------------------------
+    // L1 right half — bottom row BNM
+    // -------------------------------------------------------------------------
+    key <AB05>  { [ b, B, greater      ] };  // L1: >
+    key <AB06>  { [ n, N, asterisk     ] };  // L1: * (right hand, WIP)
+    key <AB07>  { [ m, M, colon        ] };  // L1: :
+
 };
